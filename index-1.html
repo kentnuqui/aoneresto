@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourmet Haven | Fine Dining Experience</title>
+    <meta name="description" content="Experience exquisite cuisine at Gourmet Haven. Browse our menu, place orders, and enjoy fine dining at its best.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #e63946;
+            --secondary-color: #f1faee;
+            --accent-color: #a8dadc;
+            --dark-color: #1d3557;
+            --light-color: #f8f9fa;
+        }
+        
+        /* Fluid typography */
+        html {
+            font-size: clamp(14px, 2vw, 18px);
+        }
+        
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+        }
+        
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+        }
+        
+        h3 {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+        }
+        
+        /* Splash screen animation */
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
+        }
+        
+        .splash-screen {
+            animation: fadeOut 0.5s ease-out 2s forwards;
+        }
+        
+        /* Onboarding transitions */
+        .onboarding-slide {
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        /* Menu item hover effect */
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--secondary-color);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Splash Screen -->
+    <div id="splashScreen" class="splash-screen fixed inset-0 bg-[var(--dark-color)] flex flex-col items-center justify-center z-50">
+        <div class="text-center">
+            <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-[var(--primary-color)] flex items-center justify-center">
+                <i class="fas fa-utensils text-white text-5xl"></i>
+            </div>
+            <h1 class="text-4xl font-bold text-white mb-2">A-One Restaurant</h1>
+            <p class="text-[var(--accent-color)]">Savor the experience</p>
+        </div>
+    </div>
+
+    <!-- Onboarding Screens -->
+    <div id="onboarding" class="hidden fixed inset-0 bg-[var(--dark-color)] z-40 overflow-hidden">
+        <div class="relative h-full w-full flex">
+            <!-- Slide 1 -->
+            <div class="onboarding-slide min-w-full h-full p-8 flex flex-col items-center justify-center text-center text-white">
+                <div class="w-48 h-48 mb-8 rounded-full bg-[var(--primary-color)]/20 flex items-center justify-center">
+                    <i class="fas fa-heart text-6xl text-[var(--primary-color)]"></i>
+                </div>
+                <h2 class="text-3xl font-bold mb-4">Welcome to Gourmet Haven</h2>
+                <p class="text-lg mb-8 max-w-md">Discover our exquisite menu crafted with passion and the finest ingredients.</p>
+                <div class="flex space-x-2">
+                    <span class="w-3 h-3 rounded-full bg-[var(--primary-color)]"></span>
+                    <span class="w-3 h-3 rounded-full bg-gray-500"></span>
+                    <span class="w-3 h-3 rounded-full bg-gray-500"></span>
+                </div>
+                <button onclick="nextOnboardingSlide()" class="mt-12 px-8 py-3 bg-[var(--primary-color)] rounded-full font-medium">Next</button>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="onboarding-slide min-w-full h-full p-8 flex flex-col items-center justify-center text-center text-white">
+                <div class="w-48 h-48 mb-8 rounded-full bg-[var(--primary-color)]/20 flex items-center justify-center">
+                    <i class="fas fa-bolt text-6xl text-[var(--primary-color)]"></i>
+                </div>
+                <h2 class="text-3xl font-bold mb-4">Fast Delivery</h2>
+                <p class="text-lg mb-8 max-w-md">Enjoy our delicious meals delivered to your doorstep in record time.</p>
+                <div class="flex space-x-2">
+                    <span class="w-3 h-3 rounded-full bg-gray-500"></span>
+                    <span class="w-3 h-3 rounded-full bg-[var(--primary-color)]"></span>
+                    <span class="w-3 h-3 rounded-full bg-gray-500"></span>
+                </div>
+                <button onclick="nextOnboardingSlide()" class="mt-12 px-8 py-3 bg-[var(--primary-color)] rounded-full font-medium">Next</button>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="onboarding-slide min-w-full h-full p-8 flex flex-col items-center justify-center text-center text-white">
+                <div class="w-48 h-48 mb-8 rounded-full bg-[var(--primary-color)]/20 flex items-center justify-center">
+                    <i class="fas fa-mobile-alt text-6xl text-[var(--primary-color)]"></i>
+                </div>
+                <h2 class="text-3xl font-bold mb-4">Easy Ordering</h2>
+                <p class="text-lg mb-8 max-w-md">Browse our menu, customize your order, and pay seamlessly with our app.</p>
+                <div class="flex space-x-2">
+                    <span class="w-3 h-3 rounded-full bg-gray-500"></span>
+                    <span class="w-3 h-3 rounded-full bg-gray-500"></span>
+                    <span class="w-3 h-3 rounded-full bg-[var(--primary-color)]"></span>
+                </div>
+                <button onclick="completeOnboarding()" class="mt-12 px-8 py-3 bg-[var(--primary-color)] rounded-full font-medium">Get Started</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app" class="max-w-6xl mx-auto hidden">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-md sticky top-0 z-30">
+            <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-[var(--primary-color)]">Gourmet Haven</a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#menu" class="nav-link">Menu</a>
+                    <a href="#order" class="nav-link">Order</a>
+                    <a href="#about" class="nav-link">About</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="cartButton" class="relative">
+                        <i class="fas fa-shopping-cart text-xl text-gray-700"></i>
+                        <span id="cartCount" class="absolute -top-2 -right-2 bg-[var(--primary-color)] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                    </button>
+                    <button id="mobileMenuButton" class="md:hidden text-gray-700">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+                <a href="#home" class="block py-2 nav-link-mobile active">Home</a>
+                <a href="#menu" class="block py-2 nav-link-mobile">Menu</a>
+                <a href="#order" class="block py-2 nav-link-mobile">Order</a>
+                <a href="#about" class="block py-2 nav-link-mobile">About</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Home Screen -->
+            <section id="home" class="section active py-12 px-4 md:px-8">
+                <div class="container mx-auto">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-[var(--dark-color)]">Exquisite Dining Experience</h1>
+                            <p class="text-lg mb-8 text-gray-600">Discover our carefully crafted menu featuring the finest ingredients and innovative culinary techniques.</p>
+                            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                                <a href="#menu" class="px-8 py-3 bg-[var(--primary-color)] text-white rounded-full font-medium text-center">View Menu</a>
+                                <a href="#order" class="px-8 py-3 border-2 border-[var(--primary-color)] text-[var(--primary-color)] rounded-full font-medium text-center">Order Now</a>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Restaurant interior" 
+                                 class="w-full h-auto rounded-lg shadow-xl">
+                        </div>
+                    </div>
+                    
+                    <div class="mt-16">
+                        <h2 class="text-3xl font-bold mb-8 text-center text-[var(--dark-color)]">Why Choose Us</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                                <div class="w-16 h-16 mx-auto mb-4 bg-[var(--accent-color)] rounded-full flex items-center justify-center">
+                                    <i class="fas fa-star text-2xl text-[var(--dark-color)]"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">Premium Quality</h3>
+                                <p class="text-gray-600">We source only the finest ingredients for an unparalleled dining experience.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                                <div class="w-16 h-16 mx-auto mb-4 bg-[var(--accent-color)] rounded-full flex items-center justify-center">
+                                    <i class="fas fa-clock text-2xl text-[var(--dark-color)]"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">Fast Service</h3>
+                                <p class="text-gray-600">Enjoy your meals delivered quickly without compromising on quality.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                                <div class="w-16 h-16 mx-auto mb-4 bg-[var(--accent-color)] rounded-full flex items-center justify-center">
+                                    <i class="fas fa-heart text-2xl text-[var(--dark-color)]"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">Passionate Chefs</h3>
+                                <p class="text-gray-600">Our culinary team brings creativity and passion to every dish.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Menu Screen -->
+            <section id="menu" class="section py-12 px-4 md:px-8 bg-gray-50">
+                <div class="container mx-auto">
+                    <h2 class="text-3xl font-bold mb-2 text-center text-[var(--dark-color)]">Our Menu</h2>
+                    <p class="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">Explore our diverse selection of culinary delights crafted to satisfy every palate.</p>
+                    
+                    <div class="flex flex-wrap justify-center mb-8">
+                        <button data-category="all" class="menu-category active px-4 py-2 m-1 rounded-full bg-[var(--primary-color)] text-white">All</button>
+                        <button data-category="starters" class="menu-category px-4 py-2 m-1 rounded-full bg-white text-gray-700 border">Starters</button>
+                        <button data-category="mains" class="menu-category px-4 py-2 m-1 rounded-full bg-white text-gray-700 border">Main Courses</button>
+                        <button data-category="desserts" class="menu-category px-4 py-2 m-1 rounded-full bg-white text-gray-700 border">Desserts</button>
+                        <button data-category="drinks" class="menu-category px-4 py-2 m-1 rounded-full bg-white text-gray-700 border">Drinks</button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Menu items will be dynamically inserted here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Order Screen -->
+            <section id="order" class="section py-12 px-4 md:px-8">
+                <div class="container mx-auto">
+                    <h2 class="text-3xl font-bold mb-8 text-center text-[var(--dark-color)]">Your Order</h2>
+                    
+                    <div class="flex flex-col lg:flex-row gap-8">
+                        <!-- Order Summary -->
+                        <div class="lg:w-2/3">
+                            <div class="bg-white rounded-lg shadow-md p-6">
+                                <h3 class="text-xl font-semibold mb-4 border-b pb-2">Order Summary</h3>
+                                <div id="orderItems" class="mb-6">
+                                    <!-- Order items will be dynamically inserted here -->
+                                    <p class="text-gray-500 text-center py-8">Your cart is empty. Browse our <a href="#menu" class="text-[var(--primary-color)]">menu</a> to add items.</p>
+                                </div>
+                                
+                                <div class="border-t pt-4">
+                                    <div class="flex justify-between mb-2">
+                                        <span>Subtotal:</span>
+                                        <span id="subtotal">$0.00</span>
+                                    </div>
+                                    <div class="flex justify-between mb-2">
+                                        <span>Delivery Fee:</span>
+                                        <span id="deliveryFee">$3.99</span>
+                                    </div>
+                                    <div class="flex justify-between font-bold text-lg">
+                                        <span>Total:</span>
+                                        <span id="total">$3.99</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Delivery Information -->
+                        <div class="lg:w-1/3">
+                            <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+                                <h3 class="text-xl font-semibold mb-4 border-b pb-2">Delivery Information</h3>
+                                
+                                <form id="deliveryForm">
+                                    <div class="mb-4">
+                                        <label for="name" class="block text-gray-700 mb-2">Full Name</label>
+                                        <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]" required>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+                                        <input type="tel" id="phone" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]" required>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label for="address" class="block text-gray-700 mb-2">Delivery Address</label>
+                                        <textarea id="address" rows="3" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]" required></textarea>
+                                    </div>
+                                    
+                                    <div class="mb-6">
+                                        <label for="instructions" class="block text-gray-700 mb-2">Special Instructions</label>
+                                        <textarea id="instructions" rows="2" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"></textarea>
+                                    </div>
+                                    
+                                    <button type="submit" class="w-full py-3 bg-[var(--primary-color)] text-white rounded-lg font-medium hover:bg-[var(--dark-color)] transition duration-300">
+                                        Place Order
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Screen -->
+            <section id="about" class="section py-12 px-4 md:px-8 bg-gray-50">
+                <div class="container mx-auto">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                            <h2 class="text-3xl font-bold mb-6 text-[var(--dark-color)]">Our Story</h2>
+                            <p class="text-lg mb-4 text-gray-600">Founded in 2010, Gourmet Haven began as a small family-owned restaurant with a passion for creating memorable dining experiences.</p>
+                            <p class="text-lg mb-6 text-gray-600">Today, we've grown into a beloved establishment known for our innovative cuisine, warm hospitality, and commitment to quality.</p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-[var(--primary-color)] hover:text-[var(--dark-color)]">
+                                    <i class="fab fa-facebook-f text-2xl"></i>
+                                </a>
+                                <a href="#" class="text-[var(--primary-color)] hover:text-[var(--dark-color)]">
+                                    <i class="fab fa-instagram text-2xl"></i>
+                                </a>
+                                <a href="#" class="text-[var(--primary-color)] hover:text-[var(--dark-color)]">
+                                    <i class="fab fa-twitter text-2xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2">
+                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" 
+                                 alt="Restaurant team" 
+                                 class="w-full h-auto rounded-lg shadow-xl">
+                        </div>
+                    </div>
+                    
+                    <div class="mt-16">
+                        <h2 class="text-3xl font-bold mb-8 text-center text-[var(--dark-color)]">Visit Us</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                                <div class="w-16 h-16 mx-auto mb-4 bg-[var(--accent-color)] rounded-full flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-2xl text-[var(--dark-color)]"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">Location</h3>
+                                <p class="text-gray-600">123 Culinary Street<br>Foodie District, FH 12345</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                                <div class="w-16 h-16 mx-auto mb-4 bg-[var(--accent-color)] rounded-full flex items-center justify-center">
+                                    <i class="fas fa-clock text-2xl text-[var(--dark-color)]"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">Hours</h3>
+                                <p class="text-gray-600">
+                                    Mon-Fri: 11am - 10pm<br>
+                                    Sat-Sun: 10am - 11pm
+                                </p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                                <div class="w-16 h-16 mx-auto mb-4 bg-[var(--accent-color)] rounded-full flex items-center justify-center">
+                                    <i class="fas fa-phone-alt text-2xl text-[var(--dark-color)]"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">Contact</h3>
+                                <p class="text-gray-600">
+                                    (123) 456-7890<br>
+                                    info@gourmethaven.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-[var(--dark-color)] text-white py-8 px-4">
+            <div class="container mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-6 md:mb-0">
+                        <h3 class="text-2xl font-bold mb-2">Gourmet Haven</h3>
+                        <p class="text-[var(--accent-color)]">Savor the experience</p>
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="#" class="hover:text-[var(--accent-color)]">Privacy Policy</a>
+                        <a href="#" class="hover:text-[var(--accent-color)]">Terms of Service</a>
+                        <a href="#" class="hover:text-[var(--accent-color)]">Careers</a>
+                    </div>
+                </div>
+                <div class="mt-8 pt-6 border-t border-gray-700 text-center text-gray-400">
+                    <p>&copy; 2023 Gourmet Haven. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
+        <div class="bg-white w-full max-w-md h-full overflow-y-auto">
+            <div class="p-4 border-b flex justify-between items-center">
+                <h3 class="text-xl font-semibold">Your Cart</h3>
+                <button id="closeCart" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <div id="cartItems" class="p-4">
+                <!-- Cart items will be dynamically inserted here -->
+                <p class="text-gray-500 text-center py-12">Your cart is empty</p>
+            </div>
+            <div class="p-4 border-t">
+                <div class="flex justify-between mb-2">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">$0.00</span>
+                </div>
+                <div class="flex justify-between font-bold text-lg mb-4">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+                <a href="#order" id="checkoutButton" class="block w-full py-3 bg-[var(--primary-color)] text-white rounded-lg font-medium text-center hover:bg-[var(--dark-color)] transition duration-300">
+                    Proceed to Checkout
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div id="orderConfirmation" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div class="text-center">
+                <div class="w-20 h-20 mx-auto mb-6 bg-green-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-check text-green-500 text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2 text-[var(--dark-color)]">Order Confirmed!</h3>
+                <p class="text-gray-600 mb-6">Thank you for your order. Your food will be prepared and delivered shortly.</p>
+                <button id="closeConfirmation" class="px-8 py-3 bg-[var(--primary-color)] text-white rounded-full font-medium">
+                    Continue Browsing
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Menu data
+        const menuItems = [
+            {
+                id: 1,
+                name: "Bruschetta",
+                description: "Toasted bread topped with tomatoes, garlic, and fresh basil",
+                price: 8.99,
+                category: "starters",
+                image: "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+            },
+            {
+                id: 2,
+                name: "Calamari",
+                description: "Crispy fried squid served with lemon aioli",
+                price: 12.99,
+                category: "starters",
+                image: "https://images.unsplash.com/photo-1563281578-7a09a3b49a26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 3,
+                name: "Filet Mignon",
+                description: "8oz premium cut beef with truffle mashed potatoes",
+                price: 32.99,
+                category: "mains",
+                image: "https://images.unsplash.com/photo-1558030006-450675393462?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1631&q=80"
+            },
+            {
+                id: 4,
+                name: "Grilled Salmon",
+                description: "Fresh Atlantic salmon with lemon butter sauce and asparagus",
+                price: 24.99,
+                category: "mains",
+                image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 5,
+                name: "Mushroom Risotto",
+                description: "Creamy arborio rice with wild mushrooms and parmesan",
+                price: 18.99,
+                category: "mains",
+                image: "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1635&q=80"
+            },
+            {
+                id: 6,
+                name: "Tiramisu",
+                description: "Classic Italian dessert with coffee-soaked ladyfingers",
+                price: 9.99,
+                category: "desserts",
+                image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1527&q=80"
+            },
+            {
+                id: 7,
+                name: "Chocolate Lava Cake",
+                description: "Warm chocolate cake with a molten center, served with vanilla ice cream",
+                price: 10.99,
+                category: "desserts",
+                image: "https://images.unsplash.com/photo-1564355808539-22fda35bed7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"
+            },
+            {
+                id: 8,
+                name: "House Red Wine",
+                description: "Glass of our signature Cabernet Sauvignon",
+                price: 12.99,
+                category: "drinks",
+                image: "https://images.unsplash.com/photo-1551218372-a32e6f05c041?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 9,
+                name: "Craft Beer",
+                description: "Local IPA with citrus notes",
+                price: 7.99,
+                category: "drinks",
+                image: "https://images.unsplash.com/photo-1535958636474-b021ee887b13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            }
+        ];
+
+        // Cart state
+        let cart = [];
+        let currentOnboardingSlide = 0;
+
+        // DOM elements
+        const app = document.getElementById('app');
+        const splashScreen = document.getElementById('splashScreen');
+        const onboarding = document.getElementById('onboarding');
+        const menuContainer = document.querySelector('#menu .grid');
+        const orderItemsContainer = document.getElementById('orderItems');
+        const cartItemsContainer = document.getElementById('cartItems');
+        const cartCount = document.getElementById('cartCount');
+        const subtotalElement = document.getElementById('subtotal');
+        const totalElement = document.getElementById('total');
+        const cartSubtotal = document.getElementById('cartSubtotal');
+        const cartTotal = document.getElementById('cartTotal');
+        const cartButton = document.getElementById('cartButton');
+        const cartModal = document.getElementById('cartModal');
+        const closeCart = document.getElementById('closeCart');
+        const checkoutButton = document.getElementById('checkoutButton');
+        const deliveryForm = document.getElementById('deliveryForm');
+        const orderConfirmation = document.getElementById('orderConfirmation');
+        const closeConfirmation = document.getElementById('closeConfirmation');
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const navLinkMobiles = document.querySelectorAll('.nav-link-mobile');
+        const menuCategories = document.querySelectorAll('.menu-category');
+        const sections = document.querySelectorAll('.section');
+
+        // Initialize the app
+        function init() {
+            // Check if onboarding has been completed
+            const onboardingCompleted = localStorage.getItem('onboardingCompleted');
+            
+            // Hide splash screen after animation
+            setTimeout(() => {
+                splashScreen.style.display = 'none';
+                
+                if (onboardingCompleted || !isMobileDevice()) {
+                    showApp();
+                } else {
+                    onboarding.classList.remove('hidden');
+                }
+            }, 2500);
+            
+            // Render menu items
+            renderMenuItems();
+            
+            // Set up event listeners
+            setupEventListeners();
+            
+            // Initialize navigation
+            setupNavigation();
+        }
+
+        // Check if device is mobile
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // Show the main app
+        function showApp() {
+            app.classList.remove('hidden');
+            // Show home section by default
+            showSection('home');
+        }
+
+        // Render menu items
+        function renderMenuItems(filter = 'all') {
+            menuContainer.innerHTML = '';
+            
+            const filteredItems = filter === 'all' 
+                ? menuItems 
+                : menuItems.filter(item => item.category === filter);
+            
+            if (filteredItems.length === 0) {
+                menuContainer.innerHTML = '<p class="text-gray-500 col-span-3 text-center py-12">No items found in this category.</p>';
+                return;
+            }
+            
+            filteredItems.forEach(item => {
+                const menuItem = document.createElement('div');
+                menuItem.className = 'menu-item bg-white rounded-lg shadow-md overflow-hidden transition duration-300';
+                menuItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-semibold">${item.name}</h3>
+                            <span class="text-[var(--primary-color)] font-medium">$${item.price.toFixed(2)}</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">${item.description}</p>
+                        <button onclick="addToCart(${item.id})" class="w-full py-2 bg-[var(--primary-color)] text-white rounded-lg font-medium hover:bg-[var(--dark-color)] transition duration-300">
+                            Add to Cart
+                        </button>
+                    </div>
+                `;
+                menuContainer.appendChild(menuItem);
+            });
+        }
+
+        // Add item to cart
+        function addToCart(itemId) {
+            const item = menuItems.find(i => i.id === itemId);
+            const existingItem = cart.find(i => i.id === itemId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...item, quantity: 1 });
+            }
+            
+            updateCart();
+            
+            // Show a quick notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg';
+            notification.textContent = `${item.name} added to cart`;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('opacity-0', 'transition', 'duration-500');
+                setTimeout(() => notification.remove(), 500);
+            }, 2000);
+        }
+
+        // Update cart UI
+        function updateCart() {
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Update order summary
+            updateOrderSummary();
+            
+            // Update cart modal
+            updateCartModal();
+        }
+
+        // Update order summary
+        function updateOrderSummary() {
+            if (cart.length === 0) {
+                orderItemsContainer.innerHTML = '<p class="text-gray-500 text-center py-8">Your cart is empty. Browse our <a href="#menu" class="text-[var(--primary-color)]">menu</a> to add items.</p>';
+                subtotalElement.textContent = '$0.00';
+                totalElement.textContent = '$3.99';
+                return;
+            }
+            
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = subtotal + 3.99; // $3.99 delivery fee
+            
+            orderItemsContainer.innerHTML = '';
+            cart.forEach(item => {
+                const orderItem = document.createElement('div');
+                orderItem.className = 'flex justify-between items-center py-4 border-b';
+                orderItem.innerHTML = `
+                    <div>
+                        <h4 class="font-medium">${item.name}</h4>
+                        <p class="text-gray-500 text-sm">$${item.price.toFixed(2)} × ${item.quantity}</p>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-medium mr-4">$${(item.price * item.quantity).toFixed(2)}</span>
+                        <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                orderItemsContainer.appendChild(orderItem);
+            });
+            
+            subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+            totalElement.textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Update cart modal
+        function updateCartModal() {
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center py-12">Your cart is empty</p>';
+                cartSubtotal.textContent = '$0.00';
+                cartTotal.textContent = '$0.00';
+                checkoutButton.classList.add('opacity-50', 'cursor-not-allowed');
+                checkoutButton.disabled = true;
+                return;
+            }
+            
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = subtotal + 3.99; // $3.99 delivery fee
+            
+            cartItemsContainer.innerHTML = '';
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'flex justify-between items-center py-4 border-b';
+                cartItem.innerHTML = `
+                    <div>
+                        <h4 class="font-medium">${item.name}</h4>
+                        <div class="flex items-center mt-2">
+                            <button onclick="updateCartItemQuantity(${item.id}, ${item.quantity - 1})" class="w-8 h-8 flex items-center justify-center border rounded-l-lg">
+                                <i class="fas fa-minus text-xs"></i>
+                            </button>
+                            <span class="w-10 h-8 flex items-center justify-center border-t border-b">${item.quantity}</span>
+                            <button onclick="updateCartItemQuantity(${item.id}, ${item.quantity + 1})" class="w-8 h-8 flex items-center justify-center border rounded-r-lg">
+                                <i class="fas fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="font-medium">$${(item.price * item.quantity).toFixed(2)}</div>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+            
+            cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+            cartTotal.textContent = `$${total.toFixed(2)}`;
+            checkoutButton.classList.remove('opacity-50', 'cursor-not-allowed');
+            checkoutButton.disabled = false;
+        }
+
+        // Remove item from cart
+        function removeFromCart(itemId) {
+            cart = cart.filter(item => item.id !== itemId);
+            updateCart();
+        }
+
+        // Update cart item quantity
+        function updateCartItemQuantity(itemId, newQuantity) {
+            if (newQuantity < 1) {
+                removeFromCart(itemId);
+                return;
+            }
+            
+            const item = cart.find(i => i.id === itemId);
+            if (item) {
+                item.quantity = newQuantity;
+                updateCart();
+            }
+        }
+
+        // Onboarding functions
+        function nextOnboardingSlide() {
+            const slides = document.querySelectorAll('.onboarding-slide');
+            currentOnboardingSlide = (currentOnboardingSlide + 1) % slides.length;
+            
+            slides.forEach((slide, index) => {
+                slide.style.transform = `translateX(-${currentOnboardingSlide * 100}%)`;
+            });
+            
+            // Update dots
+            document.querySelectorAll('.onboarding-slide .flex span').forEach((dot, index) => {
+                if (index === currentOnboardingSlide) {
+                    dot.classList.add('bg-[var(--primary-color)]');
+                    dot.classList.remove('bg-gray-500');
+                } else {
+                    dot.classList.remove('bg-[var(--primary-color)]');
+                    dot.classList.add('bg-gray-500');
+                }
+            });
+        }
+
+        function completeOnboarding() {
+            localStorage.setItem('onboardingCompleted', 'true');
+            onboarding.classList.add('hidden');
+            showApp();
+        }
+
+        // Navigation functions
+        function showSection(sectionId) {
+            sections.forEach(section => {
+                if (section.id === sectionId) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+            
+            // Update active nav link
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.classList.add('text-[var(--primary-color)]', 'border-b-2', 'border-[var(--primary-color)]');
+                    link.classList.remove('text-gray-700');
+                } else {
+                    link.classList.remove('text-[var(--primary-color)]', 'border-b-2', 'border-[var(--primary-color)]');
+                    link.classList.add('text-gray-700');
+                }
+            });
+            
+            navLinkMobiles.forEach(link => {
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.classList.add('text-[var(--primary-color)]', 'font-bold');
+                    link.classList.remove('text-gray-700');
+                } else {
+                    link.classList.remove('text-[var(--primary-color)]', 'font-bold');
+                    link.classList.add('text-gray-700');
+                }
+            });
+            
+            // Close mobile menu if open
+            mobileMenu.classList.add('hidden');
+        }
+
+        function setupNavigation() {
+            // Handle hash changes
+            window.addEventListener('hashchange', () => {
+                const sectionId = window.location.hash.substring(1);
+                if (sectionId) {
+                    showSection(sectionId);
+                }
+            });
+            
+            // Show initial section based on hash
+            if (window.location.hash) {
+                const sectionId = window.location.hash.substring(1);
+                showSection(sectionId);
+            }
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // Menu category filters
+            menuCategories.forEach(button => {
+                button.addEventListener('click', () => {
+                    menuCategories.forEach(btn => {
+                        btn.classList.remove('bg-[var(--primary-color)]', 'text-white');
+                        btn.classList.add('bg-white', 'text-gray-700', 'border');
+                    });
+                    
+                    button.classList.add('bg-[var(--primary-color)]', 'text-white');
+                    button.classList.remove('bg-white', 'text-gray-700', 'border');
+                    
+                    const category = button.dataset.category;
+                    renderMenuItems(category);
+                });
+            });
+            
+            // Cart modal
+            cartButton.addEventListener('click', () => {
+                cartModal.classList.remove('hidden');
+            });
+            
+            closeCart.addEventListener('click', () => {
+                cartModal.classList.add('hidden');
+            });
+            
+            // Order form submission
+            deliveryForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // In a real app, you would send this data to your backend
+                console.log('Order submitted:', {
+                    customer: {
+                        name: document.getElementById('name').value,
+                        phone: document.getElementById('phone').value,
+                        address: document.getElementById('address').value,
+                        instructions: document.getElementById('instructions').value
+                    },
+                    items: cart,
+                    total: parseFloat(totalElement.textContent.substring(1))
+                });
+                
+                // Show confirmation
+                orderConfirmation.classList.remove('hidden');
+                cartModal.classList.add('hidden');
+                
+                // Clear cart
+                cart = [];
+                updateCart();
+                
+                // Reset form
+                deliveryForm.reset();
+            });
+            
+            closeConfirmation.addEventListener('click', () => {
+                orderConfirmation.classList.add('hidden');
+            });
+            
+            // Mobile menu toggle
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close cart modal when clicking outside
+            cartModal.addEventListener('click', (e) => {
+                if (e.target === cartModal) {
+                    cartModal.classList.add('hidden');
+                }
+            });
+        }
+
+        // Make functions available globally
+        window.addToCart = addToCart;
+        window.removeFromCart = removeFromCart;
+        window.updateCartItemQuantity = updateCartItemQuantity;
+        window.nextOnboardingSlide = nextOnboardingSlide;
+        window.completeOnboarding = completeOnboarding;
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Sweet Delights Bakery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #FFD166;
+            --accent: #06D6A0;
+            --dark: #073B4C;
+            --light: #F8F9FA;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.3s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Hide scrollbar but allow scrolling */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Custom modal layout */
+        .modal-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        @media (max-width: 640px) {
+            .modal-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto relative">
+            <button id="close-modal" class="absolute top-4 right-4 bg-white rounded-full p-2 shadow-lg z-50 hover:bg-gray-100 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="modal-content p-6">
+                <div class="h-full flex items-center">
+                    <img id="modal-image" src="" alt="Product" class="w-full h-auto max-h-96 object-cover rounded-lg">
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h2 id="modal-title" class="text-2xl font-bold"></h2>
+                            <div class="flex items-center mt-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <span class="ml-1">5.0 (120 reviews)</span>
+                            </div>
+                        </div>
+                        <span id="modal-price" class="text-2xl font-bold text-[#FF6B6B]"></span>
+                    </div>
+                    
+                    <p id="modal-description" class="mt-4 text-gray-600"></p>
+                    
+                    <div class="mt-6">
+                        <h3 class="font-bold">Size</h3>
+                        <div class="flex space-x-2 mt-2">
+                            <button class="border border-gray-300 px-4 py-1 rounded-full hover:bg-gray-50 transition-colors">Small</button>
+                            <button class="bg-[#FF6B6B] text-white px-4 py-1 rounded-full hover:bg-[#FF5A5A] transition-colors">Medium</button>
+                            <button class="border border-gray-300 px-4 py-1 rounded-full hover:bg-gray-50 transition-colors">Large</button>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 flex items-center justify-between">
+                        <div class="flex items-center border border-gray-300 rounded-full">
+                            <button class="px-3 py-1 text-xl hover:bg-gray-50 transition-colors">-</button>
+                            <span class="px-3">1</span>
+                            <button class="px-3 py-1 text-xl hover:bg-gray-50 transition-colors">+</button>
+                        </div>
+                        <button class="bg-[#FF6B6B] text-white px-6 py-2 rounded-full font-medium hover:bg-[#FF5A5A] transition-colors">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div class="max-w-md mx-auto bg-white min-h-screen">
+        <!-- Header -->
+        <header class="p-4 border-b border-gray-200 sticky top-0 bg-white z-10">
+            <div class="flex items-center">
+                <a href="index.html" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                </a>
+                <h1 class="text-xl font-bold ml-4" id="category-title">Full Menu</h1>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="relative mt-4">
+                <input type="text" id="search-input" placeholder="Search menu..." class="w-full py-2 px-4 pl-10 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-[#FF6B6B] transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 absolute left-3 top-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="pb-16">
+            <!-- Category Filter -->
+            <div class="p-4 border-b border-gray-200 sticky top-16 bg-white z-10">
+                <div class="flex space-x-2 overflow-x-auto pb-2 no-scrollbar">
+                    <a href="menu.html" class="whitespace-nowrap px-4 py-1 rounded-full border border-gray-300 hover:bg-gray-50 transition-colors">All</a>
+                    <a href="menu.html?category=cookies" class="whitespace-nowrap px-4 py-1 rounded-full border border-gray-300 hover:bg-gray-50 transition-colors">Cookies</a>
+                    <a href="menu.html?category=brownies" class="whitespace-nowrap px-4 py-1 rounded-full border border-gray-300 hover:bg-gray-50 transition-colors">Brownies</a>
+                    <a href="menu.html?category=cakes" class="whitespace-nowrap px-4 py-1 rounded-full border border-gray-300 hover:bg-gray-50 transition-colors">Cakes</a>
+                    <a href="menu.html?category=cupcakes" class="whitespace-nowrap px-4 py-1 rounded-full border border-gray-300 hover:bg-gray-50 transition-colors">Cupcakes</a>
+                    <a href="menu.html?category=coffee" class="whitespace-nowrap px-4 py-1 rounded-full border border-gray-300 hover:bg-gray-50 transition-colors">Coffee</a>
+                </div>
+            </div>
+            
+            <!-- Menu Items -->
+            <div class="p-4">
+                <h2 class="text-lg font-bold mb-4" id="menu-section-title">All Items</h2>
+                
+                <!-- No Results Message (Initially hidden) -->
+                <div id="no-results-message" class="hidden text-center py-8 text-gray-500">
+                    No items found matching your search
+                </div>
+                
+                <!-- Cookies -->
+                <div class="mb-8 category-section" data-category="cookies">
+                    <h3 class="font-bold text-lg mb-3 border-b pb-2">Cookies</h3>
+                    <div class="space-y-4 menu-items">
+                        <!-- Item 1 -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow" data-name="Chocolate Chip Cookie" data-description="Classic cookie with melty chocolate chips" data-price="$20.00" data-image="asset/image/chickenwings.png">
+                            <div class="flex">
+                                <img src="asset/image/chickenwings.png" alt="Chocolate Chip Cookie" class="w-24 h-24 object-cover">
+                                <div class="p-3 flex-1">
+                                    <div class="flex justify-between">
+                                        <h3 class="font-medium">Chocolate Chip Cookie</h3>
+                                        <p class="text-[#FF6B6B] font-bold">$20.00</p>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mt-1">Classic cookie with melty chocolate chips</p>
+                                    <button class="add-to-cart mt-2 w-full bg-[#FF6B6B] text-white py-1 rounded-full text-sm font-medium hover:bg-[#FF5A5A] transition-colors">Quick View</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 2 -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow" data-name="Oatmeal Raisin Cookie" data-description="Hearty oatmeal cookie with plump raisins" data-price="$2.99" data-image="https://images.unsplash.com/photo-1590080874088-eec64895b423?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80">
+                            <div class="flex">
+                                <img src="https://images.unsplash.com/photo-1590080874088-eec64895b423?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Oatmeal Raisin Cookie" class="w-24 h-24 object-cover">
+                                <div class="p-3 flex-1">
+                                    <div class="flex justify-between">
+                                        <h3 class="font-medium">Oatmeal Raisin Cookie</h3>
+                                        <p class="text-[#FF6B6B] font-bold">$2.99</p>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mt-1">Hearty oatmeal cookie with plump raisins</p>
+                                    <button class="add-to-cart mt-2 w-full bg-[#FF6B6B] text-white py-1 rounded-full text-sm font-medium hover:bg-[#FF5A5A] transition-colors">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Brownies -->
+                <div class="mb-8 category-section" data-category="brownies">
+                    <h3 class="font-bold text-lg mb-3 border-b pb-2">Brownies</h3>
+                    <div class="space-y-4 menu-items">
+                        <!-- Item 1 -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow" data-name="Classic Brownie" data-description="Rich, fudgy chocolate brownie" data-price="$3.99" data-image="https://images.unsplash.com/photo-1564355808539-22fda35bed7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80">
+                            <div class="flex">
+                                <img src="https://images.unsplash.com/photo-1564355808539-22fda35bed7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Classic Brownie" class="w-24 h-24 object-cover">
+                                <div class="p-3 flex-1">
+                                    <div class="flex justify-between">
+                                        <h3 class="font-medium">Classic Brownie</h3>
+                                        <p class="text-[#FF6B6B] font-bold">$3.99</p>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mt-1">Rich, fudgy chocolate brownie</p>
+                                    <button class="add-to-cart mt-2 w-full bg-[#FF6B6B] text-white py-1 rounded-full text-sm font-medium hover:bg-[#FF5A5A] transition-colors">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 2 -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow" data-name="Walnut Brownie" data-description="Fudgy brownie with crunchy walnuts" data-price="$4.49" data-image="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80">
+                            <div class="flex">
+                                <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Walnut Brownie" class="w-24 h-24 object-cover">
+                                <div class="p-3 flex-1">
+                                    <div class="flex justify-between">
+                                        <h3 class="font-medium">Walnut Brownie</h3>
+                                        <p class="text-[#FF6B6B] font-bold">$4.49</p>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mt-1">Fudgy brownie with crunchy walnuts</p>
+                                    <button class="add-to-cart mt-2 w-full bg-[#FF6B6B] text-white py-1 rounded-full text-sm font-medium hover:bg-[#FF5A5A] transition-colors">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cakes -->
+                <div class="mb-8 category-section" data-category="cakes">
+                    <h3 class="font-bold text-lg mb-3 border-b pb-2">Cakes</h3>
+                    <div class="space-y-4 menu-items">
+                        <!-- Item 1 -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow" data-name="Chocolate Cake" data-description="Layered chocolate cake with frosting" data-price="$12.99" data-image="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80">
+                            <div class="flex">
+                                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Chocolate Cake" class="w-24 h-24 object-cover">
+                                <div class="p-3 flex-1">
+                                    <div class="flex justify-between">
+                                        <h3 class="font-medium">Chocolate Cake</h3>
+                                        <p class="text-[#FF6B6B] font-bold">$12.99</p>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mt-1">Layered chocolate cake with frosting</p>
+                                    <button class="add-to-cart mt-2 w-full bg-[#FF6B6B] text-white py-1 rounded-full text-sm font-medium hover:bg-[#FF5A5A] transition-colors">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 2 -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow" data-name="Red Velvet Cake" data-description="Classic red velvet with cream cheese" data-price="$14.99" data-image="https://images.unsplash.com/photo-1562440499-64c9a111f713?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80">
+                            <div class="flex">
+                                <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Red Velvet Cake" class="w-24 h-24 object-cover">
+                                <div class="p-3 flex-1">
+                                    <div class="flex justify-between">
+                                        <h3 class="font-medium">Red Velvet Cake</h3>
+                                        <p class="text-[#FF6B6B] font-bold">$14.99</p>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mt-1">Classic red velvet with cream cheese</p>
+                                    <button class="add-to-cart mt-2 w-full bg-[#FF6B6B] text-white py-1 rounded-full text-sm font-medium hover:bg-[#FF5A5A] transition-colors">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cupcakes -->
+                <div class="mb-8 category-section" data-category="cupcakes">
+                    <h3 class="font-bold text-lg mb-3 border-b pb-2">Cupcakes</h3>
+                    <div class="space-y-4 menu-items">
+                        <!-- Item 1 -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow" data-name="Vanilla Cupcake" data-description="Fluffy vanilla cupcake with buttercream" data-price="$3.49" data-image="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80">
+                            <div class="flex">
+                                <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Vanilla Cupcake" class="w-24 h-24 object-cover">
+                                <div class="p-3 flex-1">
+                                    <div class="flex justify-between">
+                                        <h3 class="font-medium">Vanilla Cupcake</h3>
+                                        <p class="text-[#FF6B6B] font-bold">$3.49</p>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mt-1">Fluffy vanilla cupcake with buttercream</p>
+                                    <button class="add-to-cart mt-2 w-full bg-[#FF6B6B] text-white py-1 rounded-full text-sm font-medium hover:bg-[#FF5A5A] transition-colors">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 2 -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow" data-name="Chocolate Cupcake" data-description="Rich chocolate cupcake with ganache" data-price="$3.49" data-image="https://images.unsplash.com/photo-1587668178277-295251f900ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80">
+                            <div class="flex">
+                                <img src="https://images.unsplash.com/photo-1587668178277-295251f900ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Chocolate Cupcake" class="w-24 h-24 object-cover">
+                                <div class="p-3 flex-1">
+                                    <div class="flex justify-between">
+                                        <h3 class="font-medium">Chocolate Cupcake</h3>
+                                        <p class="text-[#FF6B6B] font-bold">$3.49</p>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mt-1">Rich chocolate cupcake with ganache</p>
+                                    <button class="add-to-cart mt-2 w-full bg-[#FF6B6B] text-white py-1 rounded-full text-sm font-medium hover:bg-[#FF5A5A] transition-colors">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Coffee -->
+                <div class="mb-8 category-section" data-category="coffee">
+                    <h3 class="font-bold text-lg mb-3 border-b pb-2">Coffee</h3>
+                    <div class="space-y-4 menu-items">
+                        <!-- Item 1 -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow" data-name="Espresso" data-description="Strong and aromatic espresso shot" data-price="$2.99" data-image="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80">
+                            <div class="flex">
+                                <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Espresso" class="w-24 h-24 object-cover">
+                                <div class="p-3 flex-1">
+                                    <div class="flex justify-between">
+                                        <h3 class="font-medium">Espresso</h3>
+                                        <p class="text-[#FF6B6B] font-bold">$2.99</p>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mt-1">Strong and aromatic espresso shot</p>
+                                    <button class="add-to-cart mt-2 w-full bg-[#FF6B6B] text-white py-1 rounded-full text-sm font-medium hover:bg-[#FF5A5A] transition-colors">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 2 -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow" data-name="Cappuccino" data-description="Espresso with steamed milk foam" data-price="$3.99" data-image="https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80">
+                            <div class="flex">
+                                <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Cappuccino" class="w-24 h-24 object-cover">
+                                <div class="p-3 flex-1">
+                                    <div class="flex justify-between">
+                                        <h3 class="font-medium">Cappuccino</h3>
+                                        <p class="text-[#FF6B6B] font-bold">$3.99</p>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mt-1">Espresso with steamed milk foam</p>
+                                    <button class="add-to-cart mt-2 w-full bg-[#FF6B6B] text-white py-1 rounded-full text-sm font-medium hover:bg-[#FF5A5A] transition-colors">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around py-3 max-w-md mx-auto">
+            <a href="index.html" class="flex flex-col items-center text-gray-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                <span class="text-xs mt-1">Home</span>
+            </a>
+            <a href="#" class="flex flex-col items-center text-[#FF6B6B]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+                <span class="text-xs mt-1">Menu</span>
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <span class="text-xs mt-1">Cart</span>
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                <span class="text-xs mt-1">Profile</span>
+            </a>
+        </nav>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get category from URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            
+            // Update page title based on category
+            const categoryTitle = document.getElementById('category-title');
+            const menuSectionTitle = document.getElementById('menu-section-title');
+            
+            if (category) {
+                const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+                categoryTitle.textContent = categoryName;
+                menuSectionTitle.textContent = categoryName;
+                
+                // Hide all category sections except the selected one
+                document.querySelectorAll('.category-section').forEach(section => {
+                    if (section.dataset.category !== category) {
+                        section.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Highlight the active category filter
+            document.querySelectorAll('.sticky a').forEach(link => {
+                if (link.href === window.location.href) {
+                    link.classList.add('bg-[#FF6B6B]', 'text-white', 'border-[#FF6B6B]');
+                    link.classList.remove('border-gray-300');
+                }
+            });
+            
+            // Add to cart functionality
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemCard = this.closest('[data-name]');
+                    const itemName = itemCard.dataset.name;
+                    const itemDescription = itemCard.dataset.description;
+                    const itemPrice = itemCard.dataset.price;
+                    const itemImage = itemCard.dataset.image;
+                    
+                    // Populate modal with item data
+                    document.getElementById('modal-title').textContent = itemName;
+                    document.getElementById('modal-description').textContent = itemDescription;
+                    document.getElementById('modal-price').textContent = itemPrice;
+                    document.getElementById('modal-image').src = itemImage;
+                    document.getElementById('modal-image').alt = itemName;
+                    
+                    // Show modal with animations
+                    const modal = document.getElementById('product-modal');
+                    modal.classList.remove('hidden');
+                    modal.classList.add('fade-in');
+                    document.body.classList.add('overflow-hidden');
+                });
+            });
+            
+            // Close modal functionality
+            document.getElementById('close-modal').addEventListener('click', function() {
+                const modal = document.getElementById('product-modal');
+                modal.classList.add('hidden');
+                modal.classList.remove('fade-in');
+                document.body.classList.remove('overflow-hidden');
+            });
+            
+            // Close modal when clicking outside
+            document.getElementById('product-modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.add('hidden');
+                    this.classList.remove('fade-in');
+                    document.body.classList.remove('overflow-hidden');
+                }
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('search-input');
+            const noResultsMessage = document.getElementById('no-results-message');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.trim().toLowerCase();
+                const allItems = document.querySelectorAll('.menu-items > div');
+                const categorySections = document.querySelectorAll('.category-section');
+                
+                // Reset display if search is empty
+                if (searchTerm === '') {
+                    allItems.forEach(item => {
+                        item.style.display = 'block';
+                    });
+                    
+                    categorySections.forEach(section => {
+                        section.style.display = 'block';
+                    });
+                    
+                    noResultsMessage.classList.add('hidden');
+                    return;
+                }
+                
+                let hasMatches = false;
+                
+                // Search through all items
+                allItems.forEach(item => {
+                    const itemName = item.dataset.name.toLowerCase();
+                    const itemDescription = item.dataset.description.toLowerCase();
+                    
+                    if (itemName.includes(searchTerm) || itemDescription.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        hasMatches = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Handle category sections visibility
+                categorySections.forEach(section => {
+                    const visibleItems = section.querySelectorAll('.menu-items > div[style="display: block"]').length;
+                    
+                    if (visibleItems > 0) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide no results message
+                if (hasMatches) {
+                    noResultsMessage.classList.add('hidden');
+                } else {
+                    noResultsMessage.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
