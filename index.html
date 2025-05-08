@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explore the delicious menu of Gourmet Haven. We offer a variety of breakfast, lunch, dinner, desserts, and drinks. Find your new favorite dish today!">
+    <title>A-One | Our Menu</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <!-- Fallback for older browsers (optional, create a 16x16 or 32x32 PNG named favicon.png) -->
+    <!-- <link rel="icon" href="favicon.png" type="image/png"> -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- Google Fonts Import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border-left-color: #09f;
+            animation: spin 1s ease infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        html,
+        body {
+            height: 100%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Montserrat', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: #374151;
+            background-color: #f9fafb;
+            /* Tailwind gray-50 */
+        }
+
+        main {
+            flex-grow: 1;
+        }
+
+        .overflow-hidden-body {
+            overflow: hidden;
+        }
+
+        .aspect-w-16 {
+            position: relative;
+            padding-bottom: calc(9 / 16 * 100%);
+        }
+
+        .aspect-w-16>* {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .aspect-h-9 {
+            /* Handled by aspect-w-16's padding-bottom */
+        }
+
+        .aspect-h-7 {
+            position: relative;
+            padding-bottom: calc(7 / 16 * 100%);
+        }
+
+        .aspect-h-7>* {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* CUSTOM TYPOGRAPHY STYLES */
+        .font-heading {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Header specific text color adjustments for when it's transparent vs. solid */
+        /* Initial state (transparent header) - assuming hero background is light (like amber-50) */
+        #main-header .brand-name-span-initial {
+            color: #ea580c;
+            /* orange-600 */
+        }
+
+        #main-header .brand-name-text-initial {
+            color: #374151;
+            /* gray-700 */
+        }
+
+        #main-header #main-categories-nav a {
+            color: #4b5563;
+            /* gray-600 */
+            transition: color 0.2s ease-in-out;
+        }
+
+        #main-header #main-categories-nav a:hover {
+            color: #f97316;
+            /* orange-500 */
+        }
+
+        #main-header #main-categories-nav a.text-orange-600 {
+            /* Active link */
+            color: #ea580c !important;
+            font-weight: 600;
+        }
+
+        #main-header #mobile-menu-button {
+            color: #374151;
+            /* gray-700 */
+        }
+
+        /* Scrolled state (header has bg-white) - colors might be the same or different */
+        #main-header.bg-white .brand-name-span-initial {
+            color: #ea580c;
+        }
+
+        #main-header.bg-white .brand-name-text-initial {
+            color: #374151;
+        }
+
+        #main-header.bg-white #main-categories-nav a {
+            color: #4b5563;
+        }
+
+        #main-header.bg-white #main-categories-nav a:hover {
+            color: #f97316;
+        }
+
+        #main-header.bg-white #main-categories-nav a.text-orange-600 {
+            color: #ea580c !important;
+            font-weight: 600;
+        }
+
+        #main-header.bg-white #mobile-menu-button {
+            color: #374151;
+        }
+
+        #mobile-menu .brand-name-mobile {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        #mobile-main-categories-nav a {
+            font-weight: 500;
+            color: #4b5563;
+        }
+
+        #mobile-main-categories-nav a.text-orange-600 {
+            color: #ea580c !important;
+            font-weight: 600;
+        }
+
+        #current-category-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: #1f2937;
+            /* gray-800 */
+        }
+
+        #sub-categories-buttons button,
+        #sub-categories-dropdown {
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        #menu-items-grid .card-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: #111827;
+            /* gray-900 */
+            line-height: 1.3;
+        }
+
+        /* Description on card removed, so this style might be unused now
+        #menu-items-grid .card-description {
+            font-weight: 400;
+            line-height: 1.6;
+            color: #4b5563; 
+        }
+        */
+        #menu-items-grid .card-price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #ea580c;
+            /* orange-600 */
+        }
+
+        /* Modal Typography */
+        #modal-item-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #111827;
+            /* gray-900 */
+        }
+
+        #modal-item-description {
+            font-weight: 400;
+            line-height: 1.7;
+            color: #374151;
+            /* gray-700 */
+        }
+
+        #modal-item-price {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: #ea580c;
+            /* orange-600 */
+        }
+
+        #modal-item-category-tag,
+        #modal-item-subcategory-tag {
+            font-weight: 500;
+            font-size: 0.75rem;
+            /* text-xs */
+        }
+
+        #item-modal .modal-label {
+            font-weight: 600;
+            letter-spacing: 0.075em;
+            color: #6b7280;
+            /* gray-500 */
+        }
+
+        #search-bar::placeholder {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            color: #9ca3af;
+            /* gray-400 */
+        }
+
+        #search-bar {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            color: #1f2937;
+            /* gray-800 */
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1f2937;
+            /* Tailwind's gray-800 */
+        }
+
+        footer .brand-name-footer span:first-child {
+            color: #f97316;
+        }
+
+        footer .brand-name-footer span:last-child {
+            color: #d1d5db;
+        }
+
+        footer .brand-name-footer:hover span:first-child {
+            color: #ea580c;
+        }
+
+        footer .brand-name-footer:hover span:last-child {
+            color: #f3f4f6;
+        }
+
+        footer h5 {
+            font-family: 'Playfair Display', serif;
+            color: #e5e7eb;
+        }
+
+        footer p,
+        footer ul li a,
+        footer ul li span {
+            color: #9ca3af;
+            font-family: 'Montserrat', sans-serif;
+            transition: color 0.2s ease-in-out;
+        }
+
+        footer ul li a:hover {
+            color: #fdba74;
+            /* orange-300 */
+        }
+
+        footer p.copyright-text {
+            color: #d1d5db;
+        }
+
+        /* Specific color for Opening Hours text in footer */
+        .footer-opening-hours ul li {
+            color: #e5e7eb;
+            /* Example: Tailwind's gray-200 */
+        }
+
+
+        /* You May Also Like Section Styles */
+        #you-may-like-section h2 {
+            color: #1f2937;
+        }
+
+        #you-may-like-grid {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        #you-may-like-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .yml-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            flex-shrink: 0;
+        }
+
+        .yml-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.07);
+        }
+
+        .yml-card-image-wrapper {
+            position: relative;
+            padding-bottom: 66.66%;
+            background-color: #e5e7eb;
+        }
+
+        .yml-card-image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .yml-card-content {
+            padding: 0.75rem 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .yml-card-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+            line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .yml-card-subcategory {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .yml-card-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0.5rem;
+        }
+
+        .yml-card-price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #ea580c;
+        }
+
+        .yml-card-button {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 0.75rem;
+            color: #f97316;
+            padding: 0.25rem 0.625rem;
+            border: 1px solid #fdba74;
+            border-radius: 9999px;
+            transition: all 0.2s ease-in-out;
+            white-space: nowrap;
+        }
+
+        .yml-card-button:hover {
+            background-color: #fff7ed;
+            color: #c2410c;
+            border-color: #fb923c;
+        }
+
+        #you-may-like-section .font-heading {
+            font-family: 'Playfair Display', serif;
+        }
+
+        #you-may-like-grid.grabbing {
+            cursor: grabbing;
+        }
+
+        @keyframes elasticTextBounce {
+            0% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-6px);
+            }
+
+            55% {
+                transform: translateY(0);
+            }
+
+            70% {
+                transform: translateY(-3px);
+            }
+
+            85% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        #mobile-main-categories-nav a:hover {
+            animation: elasticTextBounce 0.5s ease-out;
+            color: #f97316;
+        }
+
+        #mobile-main-categories-nav a.text-orange-600:hover {
+            color: #ea580c !important;
+        }
+
+        .cta {
+            border: none;
+            background: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .cta span {
+            letter-spacing: 4px;
+            font-size: 12px;
+            padding-right: 10px;
+            text-transform: uppercase;
+        }
+
+        .cta svg {
+            transform: translateX(-8px);
+            transition: all 0.3s ease;
+        }
+
+        .cta:hover svg {
+            transform: translateX(0);
+        }
+
+        .cta:active svg {
+            transform: scale(0.9);
+        }
+
+        .hover-underline-animation {
+            position: relative;
+            color: #1f2937;
+            padding-bottom: 10px;
+        }
+
+        .hover-underline-animation:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #ea580c;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+
+        .cta:hover .hover-underline-animation {
+            color: #ea580c;
+        }
+
+        .cta:hover .hover-underline-animation:after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            display: inline-block;
+            padding: 0.5rem;
+            z-index: 70;
+            position: relative;
+        }
+
+        .hamburger input {
+            display: none;
+        }
+
+        .hamburger svg {
+            height: 2.2em;
+            transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hamburger .line {
+            fill: none;
+            stroke: currentColor;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 3;
+            transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+                stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hamburger input:checked+svg {
+            color: #ea580c;
+        }
+
+        .hamburger .line-top-bottom {
+            stroke-dasharray: 12 63;
+        }
+
+        .hamburger input:checked+svg {
+            transform: rotate(-45deg);
+        }
+
+        .hamburger input:checked+svg .line-top-bottom {
+            stroke-dasharray: 20 300;
+            stroke-dashoffset: -32.42;
+        }
+
+        #hero-section {
+            overflow: hidden;
+            background-color: #fffbeb;
+            /* Tailwind amber-50 */
+        }
+
+        .hero-image-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #hero-main-image {
+            animation: rotatePlate 30s linear infinite;
+            z-index: 10;
+            position: relative;
+        }
+
+        @keyframes rotatePlate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .floating-svg {
+            position: absolute;
+            opacity: 0.7;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) translateX(0px) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-15px) translateX(10px) rotate(5deg);
+            }
+
+            50% {
+                transform: translateY(5px) translateX(-10px) rotate(-3deg);
+            }
+
+            75% {
+                transform: translateY(-10px) translateX(5px) rotate(2deg);
+            }
+        }
+
+        #svg-leaf-1 {
+            top: 10%;
+            left: 5%;
+            width: 40px;
+            height: 40px;
+            animation-delay: 0s;
+            z-index: 1;
+        }
+
+        #svg-berry-1 {
+            bottom: 15%;
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            animation-delay: -2s;
+            z-index: 1;
+        }
+
+        #svg-swirl-1 {
+            top: 20%;
+            right: 5%;
+            width: 35px;
+            height: 35px;
+            animation-delay: -4s;
+            z-index: 1;
+        }
+
+        #svg-leaf-2 {
+            bottom: 5%;
+            right: 15%;
+            width: 50px;
+            height: 50px;
+            animation-delay: -6s;
+            z-index: 1;
+        }
+
+        #svg-berry-2 {
+            top: 60%;
+            left: -5%;
+            width: 25px;
+            height: 25px;
+            animation-delay: -1s;
+            z-index: 1;
+        }
+
+        .smoke-svg {
+            position: absolute;
+            opacity: 0;
+            animation: smoke-drift 10s ease-out infinite;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        @keyframes smoke-drift {
+            0% {
+                opacity: 0;
+                transform: translateY(10px) scale(0.6) rotate(0deg);
+            }
+
+            25% {
+                opacity: 0.25;
+                transform: translateY(-20px) scale(0.9) rotate(-5deg);
+            }
+
+            50% {
+                opacity: 0.2;
+                transform: translateY(-50px) translateX(10px) scale(1.1) rotate(5deg);
+            }
+
+            75% {
+                opacity: 0.1;
+                transform: translateY(-80px) translateX(-5px) scale(1.2) rotate(-2deg);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-120px) translateX(15px) scale(1) rotate(10deg);
+            }
+        }
+
+        #smoke-1 {
+            top: 20%;
+            left: 15%;
+            width: 60px;
+            height: 90px;
+            animation-delay: 0s;
+        }
+
+        #smoke-2 {
+            top: 15%;
+            right: 10%;
+            width: 70px;
+            height: 100px;
+            animation-delay: -2.5s;
+            transform: scaleX(-1);
+        }
+
+        #smoke-3 {
+            bottom: 20%;
+            left: 10%;
+            width: 50px;
+            height: 80px;
+            animation-delay: -5s;
+        }
+
+        #smoke-4 {
+            bottom: 15%;
+            right: 15%;
+            width: 65px;
+            height: 95px;
+            animation-delay: -7.5s;
+            transform: scaleX(-1) rotate(10deg);
+        }
+
+        .hero-button {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, background-color 0.2s ease-out;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -5px rgba(234, 88, 12, 0.4);
+        }
+
+        #promo-modal-title {
+            font-family: 'Playfair Display', serif;
+        }
+
+        #promo-modal-text {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #promo-modal-cta-button {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: background-color 0.2s ease-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <header id="main-header" class="sticky top-0 z-50 transition-all duration-300 ease-in-out">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <div class="flex-shrink-0">
+                    <a href="#" class="brand-name text-2xl sm:text-3xl font-bold group">
+                        <span class="brand-name-span-initial transition-colors duration-150"></span><span
+                            class="brand-name-text-initial transition-colors duration-150"></span>
+                    </a>
+                </div>
+                <nav class="hidden md:block">
+                    <ul id="main-categories-nav" class="flex items-center space-x-4 lg:space-x-6">
+                      
+                    </ul>
+                </nav>
+                <div class="md:hidden">
+                    <label id="mobile-menu-button" for="hamburger-input"
+                        class="hamburger focus:outline-none relative z-[70] transition-colors duration-150">
+                        <input id="hamburger-input" type="checkbox">
+                        <svg viewBox="0 0 32 32">
+                            <path class="line line-top-bottom"
+                                d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22">
+                            </path>
+                            <path class="line" d="M7 16 27 16"></path>
+                        </svg>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero-section" class="min-h-screen relative flex items-center pt-16 md:pt-20 pb-16 md:pb-24">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="text-center md:text-left order-2 md:order-1 py-8 md:py-0">
+                    <h1
+                        class="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-800 mb-6 leading-tight">
+                        Savor the <span class="text-orange-600">Flavor</span>,<br>Delight in <span
+                            class="text-orange-600">Every Bite</span>.
+                    </h1>
+                    <p class="font-body text-gray-700 text-base sm:text-lg lg:text-xl mb-8 max-w-md mx-auto md:mx-0">
+                        Discover a world of culinary excellence. Fresh ingredients, passionate chefs, and an
+                        unforgettable dining experience await you.
+                    </p>
+                    <a href="#sub-categories-section"
+                        class="hero-button group inline-block bg-orange-600 text-white text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-lg shadow-lg hover:bg-orange-700">
+                        Explore Our Menu <i
+                            class="fas fa-arrow-right ml-2 transition-transform duration-200 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+                <div class="hero-image-container mt-0 md:mt-0 order-1 md:order-2">
+                    <svg id="svg-leaf-1" class="floating-svg text-green-400" viewBox="0 0 20 20" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.12,9.38c0,2.3-1.94,4.19-4.32,4.19c-1.33,0-2.51-0.61-3.28-1.56c0,0,0.28,1.94,3.28,1.94 c2.38,0,4.32-1.88,4.32-4.19S13.2,5.19,10.8,5.19C8.61,5.19,6.94,6.67,6.8,8.56C7.67,7.61,8.86,7,10.28,7 C12.93,7,15.12,7.08,15.12,9.38z M10.8,14.45c-2.99,0-5.42-2.38-5.42-5.3c0-2.93,2.43-5.3,5.42-5.3 c0.73,0,1.42,0.15,2.05,0.42c-0.67,0.78-1.09,1.76-1.09,2.82c0,2.48,2.05,4.5,4.56,4.5c0.22,0,0.43-0.02,0.64-0.05 C13.2,13.95,12.08,14.45,10.8,14.45z" />
+                    </svg>
+                    <svg id="svg-berry-1" class="floating-svg text-red-400" viewBox="0 0 20 20" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="10" r="6" />
+                    </svg>
+                    <svg id="svg-swirl-1" class="floating-svg text-yellow-400" viewBox="0 0 20 20" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-2a6 6 0 100-12 6 6 0 000 12zm0-3a3 3 0 100-6 3 3 0 000 6z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <svg id="svg-leaf-2" class="floating-svg text-green-500" viewBox="0 0 20 20" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg" style="transform: rotate(45deg);">
+                        <path
+                            d="M15.12,9.38c0,2.3-1.94,4.19-4.32,4.19c-1.33,0-2.51-0.61-3.28-1.56c0,0,0.28,1.94,3.28,1.94 c2.38,0,4.32-1.88,4.32-4.19S13.2,5.19,10.8,5.19C8.61,5.19,6.94,6.67,6.8,8.56C7.67,7.61,8.86,7,10.28,7 C12.93,7,15.12,7.08,15.12,9.38z M10.8,14.45c-2.99,0-5.42-2.38-5.42-5.3c0-2.93,2.43-5.3,5.42-5.3 c0.73,0,1.42,0.15,2.05,0.42c-0.67,0.78-1.09,1.76-1.09,2.82c0,2.48,2.05,4.5,4.56,4.5c0.22,0,0.43-0.02,0.64-0.05 C13.2,13.95,12.08,14.45,10.8,14.45z" />
+                    </svg>
+                    <svg id="svg-berry-2" class="floating-svg text-purple-400" viewBox="0 0 20 20" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="10" r="4" />
+                    </svg>
+
+                    <svg id="smoke-1" class="smoke-svg text-gray-300" viewBox="0 0 50 100"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 90 Q25 75 20 60 T15 40 Q30 25 25 10" stroke="currentColor" stroke-width="3"
+                            fill="none" stroke-linecap="round" />
+                    </svg>
+                    <svg id="smoke-2" class="smoke-svg text-gray-300" viewBox="0 0 50 100"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 90 Q25 75 20 60 T15 40 Q30 25 25 10" stroke="currentColor" stroke-width="4"
+                            fill="none" stroke-linecap="round" />
+                    </svg>
+                    <svg id="smoke-3" class="smoke-svg text-gray-400" viewBox="0 0 50 100"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 95 Q30 80 25 65 T20 45 Q35 30 30 15" stroke="currentColor" stroke-width="2.5"
+                            fill="none" stroke-linecap="round" />
+                    </svg>
+                    <svg id="smoke-4" class="smoke-svg text-gray-400" viewBox="0 0 50 100"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 95 Q30 80 25 65 T20 45 Q35 30 30 15" stroke="currentColor" stroke-width="3.5"
+                            fill="none" stroke-linecap="round" />
+                    </svg>
+
+                    <img id="hero-main-image" src="asset/images/food1.png" alt="Delicious gourmet salad"
+                        class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="mobile-menu-overlay"
+        class="fixed inset-0 bg-black bg-opacity-60 z-[55] hidden transition-opacity duration-300 ease-in-out opacity-0">
+    </div>
+
+    <div id="mobile-menu" class="fixed top-0 left-0 h-full w-72 sm:w-80 bg-white shadow-xl z-[60]
+                transform -translate-x-full transition-transform duration-300 ease-in-out
+                flex flex-col p-6">
+
+        <div class="text-center mb-6">
+            <a href="#"
+                class="brand-name-mobile text-2xl font-bold text-orange-600 hover:text-orange-700 transition-colors duration-150 group">
+                A-One<span class="text-gray-700 group-hover:text-gray-800 transition-colors duration-150">
+                    Restaurant</span>
+            </a>
+        </div>
+        <nav class="flex-grow">
+            <ul id="mobile-main-categories-nav" class="space-y-3">
+              
+            </ul>
+        </nav>
+        <hr class="border-gray-200 my-4">
+        <div class="pt-4">
+            <p
+                class="text-sm font-body text-gray-500 mb-3 text-center hover:text-orange-400 transition-colors duration-150">
+                Follow Us</p>
+            <div class="flex justify-center space-x-5">
+                <a href="https://www.facebook.com/profile.php?id=61575711330027" aria-label="Facebook"
+                    class="text-gray-500 hover:text-orange-500 transition-colors"> <i
+                        class="fab fa-facebook-f fa-lg"></i> </a>
+                <a href="#" aria-label="Instagram" class="text-gray-500 hover:text-orange-500 transition-colors"> <i
+                        class="fab fa-instagram fa-lg"></i> </a>
+                <a href="#" aria-label="Twitter" class="text-gray-500 hover:text-orange-500 transition-colors"> <i
+                        class="fab fa-twitter fa-lg"></i> </a>
+                <a href="#" aria-label="Tiktok" class="text-gray-500 hover:text-orange-500 transition-colors"> <i
+                        class="fab fa-tiktok fa-lg"></i> </a>
+            </div>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16">
+        <div class="mb-8 sm:mb-10 md:mb-12 flex justify-center">
+            <div class="relative w-full max-w-xl">
+                <input type="text" id="search-bar" placeholder="Search for dishes..." class="w-full py-3 px-5 pr-12 border border-gray-300 rounded-lg shadow-sm 
+                           focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent 
+                           transition-all duration-200 ease-in-out text-base" />
+                <div id="search-icon-container"
+                    class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer">
+                    <i id="search-icon" class="fas fa-search text-gray-400 text-lg"></i>
+                    <div id="loading-spinner" class="spinner hidden"></div>
+                </div>
+            </div>
+        </div>
+
+        <section id="sub-categories-section" class="mb-8 sm:mb-10 md:mb-12 text-center">
+            <h2 id="current-category-title" class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 sm:mb-6">Select
+                a Category</h2>
+            <div id="sub-categories-buttons" class="hidden md:flex flex-wrap justify-center gap-3 lg:gap-4 mb-4">
+            </div>
+            <div class="md:hidden mb-4">
+                <select id="sub-categories-dropdown" class="w-full max-w-xs mx-auto p-3 border border-gray-300 rounded-md bg-white 
+                               shadow-sm focus:outline-none focus:ring-1 focus:ring-orange-500 text-base">
+                </select>
+            </div>
+        </section>
+
+        <section id="menu-items-grid"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+          
+        </section>
+
+        <div id="no-results" class="text-center text-gray-500 py-10 sm:py-16 hidden">
+            <i class="fas fa-utensils fa-3x sm:fa-4x mb-4 text-gray-400"></i>
+            <p class="text-xl sm:text-2xl font-body">No dishes found matching your criteria.</p>
+        </div>
+
+        <section id="you-may-like-section"
+            class="mt-12 sm:mt-16 md:mt-20 mb-8 py-8 sm:py-10 md:py-12 bg-slate-100 rounded-lg shadow-md overflow-hidden relative group">
+            <button id="yml-arrow-left" aria-label="Scroll left"
+                class="absolute top-1/2 left-1 sm:left-2 md:left-3 transform -translate-y-1/2 z-10
+                            bg-white bg-opacity-75 hover:bg-opacity-100 text-gray-700 hover:text-orange-600
+                            p-2 sm:p-3 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100
+                            focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-30 disabled:cursor-not-allowed">
+                <i class="fas fa-chevron-left fa-lg"></i>
+            </button>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-2xl md:text-3xl font-heading font-semibold text-gray-800 mb-6 sm:mb-8 text-center">
+                    You May Also Like
+                </h2>
+                <div id="you-may-like-grid" class="flex overflow-x-auto space-x-4 sm:space-x-6 py-4 cursor-grab">
+                  
+                </div>
+                <div id="no-suggestions" class="text-center text-gray-500 py-6 hidden">
+                    <i class="fas fa-lightbulb fa-2x mb-3 text-gray-400"></i>
+                    <p class="font-body">Explore more of our delicious options!</p>
+                </div>
+            </div>
+            <button id="yml-arrow-right" aria-label="Scroll right"
+                class="absolute top-1/2 right-1 sm:right-2 md:right-3 transform -translate-y-1/2 z-10
+                            bg-white bg-opacity-75 hover:bg-opacity-100 text-gray-700 hover:text-orange-600
+                            p-2 sm:p-3 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100
+                            focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-30 disabled:cursor-not-allowed">
+                <i class="fas fa-chevron-right fa-lg"></i>
+            </button>
+        </section>
+    </main>
+
+    <footer class="font-body">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10 text-center sm:text-left">
+                <div>
+                    <a href="#" class="inline-block mb-4">
+                        <span class="brand-name-footer text-2xl font-bold transition-colors duration-150 group">
+                            <span>A-One</span><span> Restaurant</span>
+                        </span>
+                    </a>
+                    <p class="copyright-text text-sm mt-2">
+                        © <span id="footer-year">2025</span> EEINC. <br class="hidden sm:inline">All Rights Reserved.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="text-md font-semibold text-gray-100 mb-4 uppercase tracking-wider">Contact & Visit</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-map-marker-alt fa-fw mr-2 text-orange-400"></i>
+                            <span>Pohnpei<br class="sm:hidden">Kolonia, FSM 96941</span>
+                        </li>
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-phone-alt fa-fw mr-2 text-orange-400"></i>
+                            <a href="" class="hover:text-orange-300">(921) 320-3332</a>
+                        </li>
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-envelope fa-fw mr-2 text-orange-400"></i>
+                            <a href=""
+                                class="hover:text-orange-300">aonesupermart@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-opening-hours"> 
+                    <h5 class="text-md font-semibold text-gray-100 mb-4 uppercase tracking-wider">Opening Hours</h5>
+                    <ul class="space-y-1 text-sm">
+                        <li class="text-gray-200">Mon - Thurs: 7 AM - 9 PM</li> 
+                        <li class="text-gray-200">Fri: 7 AM - 10 PM</li>  
+                        <li class="text-gray-200">Sat: 7 AM - 10 PM</li> 
+                        <li class="text-gray-200">Sun: 7 AM - 9 PM</li>   
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-md font-semibold text-gray-100 mb-4 uppercase tracking-wider">Follow Us</h5>
+                    <div class="flex justify-center sm:justify-start space-x-5">
+                        <a href="#" aria-label="Facebook" class="text-gray-300 hover:text-orange-300 transition-colors">
+                            <i class="fab fa-facebook-f fa-lg"></i> </a>
+                        <a href="#" aria-label="Instagram"
+                            class="text-gray-300 hover:text-orange-300 transition-colors"> <i
+                                class="fab fa-instagram fa-lg"></i> </a>
+                        <a href="#" aria-label="Twitter" class="text-gray-300 hover:text-orange-300 transition-colors">
+                            <i class="fab fa-twitter fa-lg"></i> </a>
+                        <a href="#" aria-label="Tiktok" class="text-gray-300 hover:text-orange-300 transition-colors">
+                            <i class="fab fa-tiktok fa-lg"></i> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="go-to-top"
+        class="fixed bottom-6 right-6 bg-orange-500 hover:bg-orange-600 text-white 
+                   p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 
+                   focus:outline-none focus:ring-2 focus:ring-orange-300 focus:ring-offset-2 focus:ring-offset-gray-800"
+        style="visibility: hidden; pointer-events: none;">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div id="promo-modal"
+        class="fixed inset-0 z-[110] flex items-center justify-center bg-black bg-opacity-60 p-4 hidden transition-opacity duration-300 ease-in-out opacity-0">
+        <div id="promo-modal-content-box" class="bg-white rounded-lg shadow-xl w-full max-w-md 
+                   transform scale-95 transition-all duration-300 ease-in-out 
+                   overflow-hidden relative">
+            <button id="promo-modal-close-button" aria-label="Close promotional message" class="absolute top-3 right-3 text-gray-500 hover:text-red-600 transition-colors 
+                          p-1.5 rounded-full hover:bg-gray-100 focus:outline-none 
+                          focus:ring-2 focus:ring-red-500 z-10">
+                <i class="fas fa-times fa-lg"></i>
+            </button>
+            <div id="promo-modal-image-container" class="w-full">
+                <img id="promo-modal-image" src="" alt="Special Promotion"
+                    class="w-full h-auto object-contain rounded-lg">
+            </div>
+        </div>
+    </div>
+
+    <div id="item-modal"
+        class="fixed inset-0 z-[100] flex items-center justify-center bg-black bg-opacity-70 p-4 hidden transition-opacity duration-300 ease-in-out opacity-0">
+        <div id="modal-content-box" class="bg-white rounded-xl shadow-2xl w-full max-w-3xl lg:max-w-4xl max-h-[90vh] 
+                    transform scale-95 transition-all duration-300 ease-in-out 
+                    flex flex-col md:flex-row overflow-hidden">
+
+            <div class="w-full md:w-1/2 lg:w-5/12 flex-shrink-0 bg-gray-100 md:max-h-[90vh]">
+                <img id="modal-item-image" src="" alt="Item Image" class="w-full h-64 md:h-full object-cover">
+            </div>
+
+ 
+
+            <div class="flex flex-col flex-grow p-5 sm:p-6 space-y-4 overflow-y-auto md:max-h-[90vh]">
+                <div class="flex justify-between items-start">
+                    <h3 id="modal-item-name" class="text-2xl lg:text-3xl font-semibold text-gray-800 mr-4">Item Name
+                    </h3>
+                    <button id="modal-close-button" class="text-gray-500 hover:text-red-600 transition-colors p-1 rounded-full 
+                                   hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500 flex-shrink-0">
+                        <i class="fas fa-times fa-lg"></i>
+                    </button>
+                </div>
+                <div>
+                    <p class="modal-label text-gray-500 text-xs font-medium uppercase tracking-wider mb-1">Description
+                    </p>
+                    <hr class="border-gray-200 my-2">
+                    <p id="modal-item-description" class="text-gray-700 leading-relaxed text-sm md:text-base">Full item
+                        description goes here...</p>
+                </div>
+                <hr class="border-gray-200 my-2">
+                <div class="flex flex-wrap gap-2 items-center">
+                    <span class="modal-label text-gray-500 text-xs font-medium uppercase tracking-wider">Tags:</span>
+                    <span id="modal-item-category-tag"
+                        class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-medium">Category</span>
+                    <span id="modal-item-subcategory-tag"
+                        class="bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-xs font-medium">Subcategory</span>
+                </div>
+                <div class="pt-2 mt-auto">
+                    <p class="modal-label text-gray-500 text-xs font-medium uppercase tracking-wider mb-1">Price</p>
+                    <p id="modal-item-price" class="text-3xl lg:text-4xl font-bold text-orange-600">$0.00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
