@@ -1,0 +1,1023 @@
+[
+    {
+        "mainCategoryName": "Breakfast Boosts",
+        "subCategories": [
+            {
+                "category": "All Day Breakfast",
+                "items": [
+                    {
+                        "id": 1,
+                        "name": "Grand Slam",
+                        "description": "Two eggs any style with Portuguese sausage, bacon & ham, served with rice.",
+                        "price": 15.50,
+                        "image": "asset/images/breakfast/grandslam.png"
+                    },
+                    {
+                        "id": 2,
+                        "name": "Steak and Egg",
+                        "description": "Top Sirloin Steak and two eggs any style, served with rice or toast.",
+                        "price": 20,
+                        "image": "asset/images/breakfast/steakegg.png"
+                    },
+                    {
+                        "id": 3,
+                        "name": "Eggs Benedict",
+                        "description": "Poached eggs & your choice of ham or bacon, over english muffins, topped with hollandaise sauce.",
+                        "price": 11,
+                        "image": "asset/images/breakfast/eggsbenedict.png"
+                    },
+                    {
+                        "id": 4,
+                        "name": "Tuna Steak and Eggs",
+                        "description": "Grilled tuna steak & two eggs any style, served with rice or toast",
+                        "price": 9.25,
+                        "image": "asset/images/breakfast/tunasteakeggs.png"
+                    },
+                    {
+                        "id": 5,
+                        "name": "Beef Tapa",
+                        "description": "",
+                        "price": 10,
+                        "image": "asset/images/breakfast/beeftapa.png"
+                    }
+                ]
+            },
+            {
+                "category": "Eggs & Omelettes",
+                "items": [
+                    {
+                        "id": 6,
+                        "name": "Ham and Egg",
+                        "description": "",
+                        "price": 8.75,
+                        "image": "asset/images/breakfast/hamandegg.png"
+                    },
+                    {
+                        "id": 7,
+                        "name": "Link Sausage & Eggs",
+                        "description": "",
+                        "price": 9,
+                        "image": ""
+                    },
+                    {
+                        "id": 8,
+                        "name": "Portuguese Sausage & Eggs",
+                        "description": "",
+                        "price": 8.50,
+                        "image": "asset/images/breakfast/portuegg.png"
+                    },
+                    {
+                        "id": 9,
+                        "name": "Pork and Eggs",
+                        "description": "",
+                        "price": 9.25,
+                        "image": ""
+                    },
+                    {
+                        "id": 10,
+                        "name": "Bacon and Eggs",
+                        "description": "",
+                        "price": 9.50,
+                        "image": "asset/images/breakfast/baconeggs.png"
+                    },
+                    {
+                        "id": 11,
+                        "name": "Spam and Eggs",
+                        "description": "",
+                        "price": 9,
+                        "image": "asset/images/breakfast/spamegg.png"
+                    },
+                    {
+                        "id": 12,
+                        "name": "Tuna Omelette",
+                        "description": "",
+                        "price": 9.75,
+                        "image": "asset/images/breakfast/tunaome.png"
+                    },
+                    {
+                        "id": 13,
+                        "name": "Veggie Omelette",
+                        "description": "",
+                        "price": 8,
+                        "image": ""
+                    },
+                    {
+                        "id": 14,
+                        "name": "Ham and Cheese Omelette",
+                        "description": "",
+                        "price": 7.75,
+                        "image": "asset/images/breakfast/hamcheeseome.png"
+                    },
+                    {
+                        "id": 15,
+                        "name": "Cheese Omelette",
+                        "description": "",
+                        "price": 7.75,
+                        "image": ""
+                    }
+                ]
+            },
+            {
+                "category": "Japanese Ramen",
+                "items": [
+                    {
+                        "id": 16,
+                        "name": "Ramen (Shoyu)",
+                        "description": "",
+                        "price": 9.50,
+                        "image": "",
+                        "meatChoices": [
+                            "Plain",
+                            "Beef",
+                            "Pork",
+                            "Ham",
+                            "Fish",
+                            "Chicken"
+                        ]
+                    },
+                    {
+                        "id": 17,
+                        "name": "Ramen (Spicy Miso)",
+                        "description": "",
+                        "price": 12.50,
+                        "image": "asset/images/breakfast/ramenbeefmiso.png",
+                        "meatChoices": [
+                            "Plain",
+                            "Beef",
+                            "Pork",
+                            "Ham",
+                            "Fish",
+                            "Chicken"
+                        ]
+                    },
+                    {
+                        "id": 18,
+                        "name": "Ramen (Miso)",
+                        "description": "",
+                        "price": 11.50,
+                        "image": "",
+                        "meatChoices": [
+                            "Plain",
+                            "Beef",
+                            "Pork",
+                            "Ham",
+                            "Fish",
+                            "Chicken"
+                        ]
+                    },
+                    {
+                        "id": 19,
+                        "name": "Ramen (Shio)",
+                        "description": "",
+                        "price": 11.25,
+                        "image": "",
+                        "meatChoices": [
+                            "Plain",
+                            "Beef",
+                            "Pork",
+                            "Ham",
+                            "Fish",
+                            "Chicken"
+                        ]
+                    },
+                    {
+                        "id": 20,
+                        "name": "Ramen",
+                        "description": "",
+                        "price": 10.75,
+                        "image": "",
+                        "meatChoices": [
+                            "Plain",
+                            "Beef",
+                            "Pork",
+                            "Ham",
+                            "Fish",
+                            "Chicken"
+                        ]
+                    },
+                    {
+                        "id": 21,
+                        "name": "Ramen",
+                        "description": "",
+                        "price": 10.50,
+                        "image": "",
+                        "meatChoices": [
+                            "Plain",
+                            "Beef",
+                            "Pork",
+                            "Ham",
+                            "Fish",
+                            "Chicken"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "Pancakes and Waffles",
+                "items": [
+                    {
+                        "id": 22,
+                        "name": "Banana Foster Pancake",
+                        "description": "Pancake with caramelized banana syrup with a hint of rum and cinnamon.",
+                        "price": 9,
+                        "image": " "
+                    },
+                    {
+                        "id": 23,
+                        "name": "Island Style Pancake",
+                        "description": "Pancake with drizzle of fruit/island syrup",
+                        "price": 8.50,
+                        "image": ""
+                    },
+                    {
+                        "id": 24,
+                        "name": "Banana Macadamia Pancake",
+                        "description": "Pancake with banana syrup and crunchy macadamia nuts.",
+                        "price": 9,
+                        "image": "asset/images/breakfast/macadamia.png"
+                    },
+                    {
+                        "id": 25,
+                        "name": "Blueberry Pancake",
+                        "description": "Pancake with drizzle of blueberries syrup.",
+                        "price": 9,
+                        "image": "asset/images/breakfast/blueberry.png"
+                    },
+                    {
+                        "id": 26,
+                        "name": "Strawberry Pancake",
+                        "description": "Pancake with drizzle of strawberries syrup.",
+                        "price": 9,
+                        "image": "  "
+                    },
+                    {
+                        "id": 27,
+                        "name": "Chocolate Pancake",
+                        "description": "Pancake with drizzle of chocolate syrup.",
+                        "price": 8.75,
+                        "image": "  "
+                    },
+                    {
+                        "id": 28,
+                        "name": "Ube Pancake",
+                        "description": "Pancake with drizzle of ube syrup.",
+                        "price": 8.75,
+                        "image": "asset/images/breakfast/ubepancake.png"
+                    },
+                    {
+                        "id": 29,
+                        "name": "Plain Waffle",
+                        "description": "",
+                        "price": 8.25,
+                        "image": "  "
+                    },
+                    {
+                        "id": 30,
+                        "name": "Banana Foster Waffle",
+                        "description": "",
+                        "price": 10.25,
+                        "image": "  "
+                    },
+                    {
+                        "id": 31,
+                        "name": "Chocolate Waffle",
+                        "description": "",
+                        "price": 9,
+                        "image": "asset/images/breakfast/chocowaffle.png"
+                    },
+                    {
+                        "id": 32,
+                        "name": "Ube Waffle",
+                        "description": "",
+                        "price": 9.25,
+                        "image": "  "
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "mainCategoryName": "Lunch Specials",
+        "subCategories": [
+            {
+                "category": "Recommended",
+                "items": [
+                    {
+                        "id": 33,
+                        "name": "A-One Bento",
+                        "description": "Rice + Panko Fish + Teriyaki Beef + Chicken",
+                        "price": 11,
+                        "image": "asset/images/lunch/aonebento.png"
+                    },
+                    {
+                        "id": 34,
+                        "name": "Fried Chicken",
+                        "description": "Chicken seasoned overnight and then breaded and deep-fried, served with rice.",
+                        "price": 7.50,
+                        "image": "asset/images/lunch/friedchicken.png"
+                    },
+                    {
+                        "id": 35,
+                        "name": "Garlic Fried Chicken",
+                        "description": "Golden fried chicken infused with rich, savory garlic flavor, served with rice.",
+                        "price": 8,
+                        "image": "  "
+                    },
+                    {
+                        "id": 36,
+                        "name": "Sweet & Sour Chicken",
+                        "description": "Chicken in tempura batter deep-fried and covered in a sweer & sour fruit and vegetable sauce, served with rice.",
+                        "price": 8,
+                        "image": "  "
+                    },
+                    {
+                        "id": 37,
+                        "name": "Sashimi",
+                        "description": "Sushi grade yellow-fin tuna sliced thin and served with a soy dipping sauce, served with rice.",
+                        "price": 9.50,
+                        "image": "asset/images/lunch/sashimi.png"
+                    },
+                    {
+                        "id": 38,
+                        "name": "Garlic Fried Tuna",
+                        "description": "Fresh tuna seared with garlic and crispy perfection, served with rice.",
+                        "price": 8.25,
+                        "image": "asset/images/lunch/garlicfriedtuna.png"
+                    },
+                    {
+                        "id": 39,
+                        "name": "Sweet & Sour Fish",
+                        "description": "Fish fillets in tempura batter deep-fried and covered in a sweet & sour fruit and vegetable sauce, served with rice.",
+                        "price": 8,
+                        "image": "asset/images/lunch/sweetandsourfish.png"
+                    }
+                ]
+            },
+            {
+                "category": "Sandwiches",
+                "items": [
+                    {
+                        "id": 40,
+                        "name": "Tuna Sandwich",
+                        "description": "",
+                        "price": 8.25,
+                        "image": "  "
+                    },
+                    {
+                        "id": 41,
+                        "name": "Club Sandwich",
+                        "description": "",
+                        "price": 9.50,
+                        "image": "asset/images/lunch/clubsandwich.png"
+                    },
+                    {
+                        "id": 42,
+                        "name": "Pastrami Sandwich",
+                        "description": "",
+                        "price": 9.50,
+                        "image": "  "
+                    },
+                    {
+                        "id": 43,
+                        "name": "Ham and Cheese Sandwich",
+                        "description": "",
+                        "price": 8,
+                        "image": "  "
+                    },
+                    {
+                        "id": 44,
+                        "name": "Turkey Sandwich",
+                        "description": "",
+                        "price": 8,
+                        "image": "  "
+                    },
+                    {
+                        "id": 45,
+                        "name": "Chicken Sandwich",
+                        "description": "",
+                        "price": 8,
+                        "image": "  "
+                    },
+                    {
+                        "id": 46,
+                        "name": "Roast Beef Sandwich",
+                        "description": "",
+                        "price": 9.25,
+                        "image": "asset/images/lunch/roastbeefsand.png"
+                    },
+                    {
+                        "id": 47,
+                        "name": "Crab and Cheese Sandwich",
+                        "description": "",
+                        "price": 9.25,
+                        "image": "asset/images/lunch/crabandcheesesandwich.png"
+                    }
+                ]
+            },
+            {
+                "category": "Burgers",
+                "items": [
+                    {
+                        "id": 48,
+                        "name": "Cheeseburger",
+                        "description": "Beef patty, melted cheese, lettuce, tomato, onion, pickles on a toasted bun.",
+                        "price": 9.75,
+                        "image": "asset/images/lunch/cheeseburger.png"
+                    },
+                    {
+                        "id": 49,
+                        "name": "Hamburger",
+                        "description": "Beef patty, lettuce, tomatoes, and pickles on a toasted bun.",
+                        "price": 9,
+                        "image": "asset/images/lunch/hamburger.png"
+                    },
+                    {
+                        "id": 50,
+                        "name": "Burger Deluxe",
+                        "description": "A deluxe masterpiece with double cheese, smoky bacon, fresh veggies, and our signature sauce on a toasted bun.",
+                        "price": 10.75,
+                        "image": "asset/images/lunch/burgerdeluxe.png"
+                    },
+                    {
+                        "id": 51,
+                        "name": "Teriyaki Burger",
+                        "description": "Juicy beef patty glazed with teriyaki sauce, and fresh lettuce on a toasted bun.",
+                        "price": 9.25,
+                        "image": "asset/images/lunch/teriyakiburger.png"
+                    }
+                ]
+            },
+            {
+                "category": "Salads",
+                "items": [
+                    {
+                        "id": 52,
+                        "name": "Caesar Salad",
+                        "description": "Fresh lettuce, creamy Caesar dressing, crunchy croutons, and Parmesan cheese.",
+                        "price": 7.50,
+                        "image": "asset/images/lunch/caesarsalad.png",
+                        "dietary": [
+                            "vegetarian",
+                            "vegan"
+                        ]
+                    },
+                    {
+                        "id": 53,
+                        "name": "Potato Salad",
+                        "description": "Potatoes, Eggs, Spices in a light mayonnaise dressing.",
+                        "price": 3.75,
+                        "image": "asset/images/lunch/potatosalad.png",
+                        "dietary": [
+                            "vegetarian",
+                            "vegan"
+                        ]
+                    },
+                    {
+                        "id": 54,
+                        "name": "Green Salad",
+                        "description": "Lettuce, carrots, tomatoes and your choice of dressing",
+                        "price": 3.75,
+                        "image": "",
+                        "dietary": [
+                            "vegan_option"
+                        ]
+                    },
+                    {
+                        "id": 55,
+                        "name": "Chef Salad",
+                        "description": "",
+                        "price": 6.25,
+                        "image": "",
+                        "dietary": [
+                            "vegan_option"
+                        ]
+                    },
+                    {
+                        "id": 56,
+                        "name": "Garden Salad",
+                        "description": "",
+                        "price": 4,
+                        "image": "",
+                        "dietary": [
+                            "vegan_option"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "mainCategoryName": "Dinner Delights",
+        "subCategories": [
+            {
+                "category": "Appetizers",
+                "items": [
+                    {
+                        "id": 57,
+                        "name": "Fresh Tuna Sashimi",
+                        "description": "Freshly-caught sushi-grade tuna delicately sliced and draped over garnish.",
+                        "price": 8.75,
+                        "image": "asset/images/dinner/freshtunasashimi.png"
+                    },
+                    {
+                        "id": 58,
+                        "name": "Fresh Tuna Poke",
+                        "description": "Fresh Tuna cut into cubes and tossed in a sauce of sesame soy sauce marinade.",
+                        "price": 6.75,
+                        "image": "asset/images/dinner/tunapoke.png"
+                    },
+                    {
+                        "id": 59,
+                        "name": "Teriyaki Meat Balls",
+                        "description": "Meat balls glazed with our chef’s signature teriyaki sauce and skewer grilled.",
+                        "price": 8.50,
+                        "image": "asset/images/dinner/terimeatballs.png"
+                    },
+                    {
+                        "id": 60,
+                        "name": "Chicken Nuggets",
+                        "description": "Sliced chicken breast seasoned then breaded/battered then deep fried/baked.",
+                        "price": 6.25,
+                        "image": "asset/images/dinner/chickennuggets.png"
+                    },
+                    {
+                        "id": 61,
+                        "name": "Classic Chicken Wings",
+                        "description": "Juicy wings done in your choice of hot or mild sauce.",
+                        "price": 7.25,
+                        "image": "asset/images/dinner/chickenwings.png"
+                    },
+                    {
+                        "id": 62,
+                        "name": "Chicken Quesadilla",
+                        "description": "Grilled chicken over melted cheese, a fresh blend of spices served between two large flour tortillas with our signature salsa spread",
+                        "price": 9,
+                        "image": "asset/images/dinner/chickenquesadilla.png"
+                    },
+                    {
+                        "id": 63,
+                        "name": "Cheese Quesadilla",
+                        "description": "Melted cheese over flour tortillas served with a fresh blend of spices with our signature salsa spread.",
+                        "price": 8,
+                        "image": "asset/images/dinner/cheesequesadilla.png"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "mainCategoryName": "Main Entrees",
+        "subCategories": [
+            {
+                "category": "Pork",
+                "items": [
+                    {
+                        "id": 64,
+                        "name": "Crispy Pork Belly",
+                        "description": "Pork belly braised and then pan-fried to a crisp.",
+                        "price": 9.75,
+                        "image": "asset/images/dinner/crispybelly.png"
+                    },
+                    {
+                        "id": 65,
+                        "name": "Pork Chops",
+                        "description": "Select cuts seared to lock in flavor then grilled to a perfect finish.",
+                        "price": 9.50,
+                        "image": "asset/images/dinner/porkchops.png"
+                    },
+                    {
+                        "id": 66,
+                        "name": "Pork sisig fried rice",
+                        "description": "Sauteed minced pork with fried rice.",
+                        "price": 9.25,
+                        "image": "asset/images/dinner/porksisigrice.png"
+                    },
+                    {
+                        "id": 67,
+                        "name": "Baby Back Ribs",
+                        "description": "Tender rack oven roasted to tender perfection.",
+                        "price": 19,
+                        "image": "  "
+                    },
+                    {
+                        "id": 68,
+                        "name": "Sweet & Sour Pork",
+                        "description": "Pork in tempura batter deep-fried and covered in a sweet & sour fruit and vegetable sauce.",
+                        "price": 9.50,
+                        "image": "  "
+                    },
+                    {
+                        "id": 69,
+                        "name": "Crispy Pork Pata",
+                        "description": "Deep-Fried Pork Knuckle with Crunchy Skin and Juicy Tender Meat.",
+                        "price": 17.50,
+                        "image": "asset/images/dinner/crispypata.png"
+                    }
+                ]
+            },
+            {
+                "category": "Delicious Steak",
+                "items": [
+                    {
+                        "id": 70,
+                        "name": "Grilled Pepper Steak",
+                        "description": "Flank steak marinated in house made pepper sauce.",
+                        "price": 26,
+                        "image": "  "
+                    },
+                    {
+                        "id": 71,
+                        "name": "Steak & Shrimp",
+                        "description": "6 oz. New York strip served with grilled tiger shrimp.",
+                        "price": 22,
+                        "image": "asset/images/dinner/steakshrimp.png"
+                    },
+                    {
+                        "id": 72,
+                        "name": "New York Steak",
+                        "description": "10 oz. New York strip cooked the way you like it.",
+                        "price": 26,
+                        "image": "  "
+                    },
+                    {
+                        "id": 73,
+                        "name": "Teriyaki Steak",
+                        "description": "10 oz. New York strip in our signature teriyaki marinade.",
+                        "price": 26,
+                        "image": "  "
+                    },
+                    {
+                        "id": 74,
+                        "name": "Rib Eye Steak",
+                        "description": "10 oz. Beef Steak lightly seasoned and grilled to order.",
+                        "price": 30,
+                        "image": "  "
+                    },
+                    {
+                        "id": 75,
+                        "name": "T-Bone Steak",
+                        "description": "12 oz. Prime cut it T-Bone marinated and cooked the way you like it.",
+                        "price": 30,
+                        "image": "  "
+                    },
+                    {
+                        "id": 76,
+                        "name": "BBQ Short Ribs",
+                        "description": "Choice cuts grilled with a light BBQ sauce marinade.",
+                        "price": 19,
+                        "image": "  "
+                    }
+                ]
+            },
+            {
+                "category": "Delicious Chicken",
+                "items": [
+                    {
+                        "id": 77,
+                        "name": "Chicken Cutlet",
+                        "description": "Chicken breast cutlet breaded then deep-fried.",
+                        "price": 8.75,
+                        "image": "  "
+                    },
+                    {
+                        "id": 78,
+                        "name": "Grilled Chicken Breast",
+                        "description": "Seasoned chicken breast grilled to perfection.",
+                        "price": 8.75,
+                        "image": "  "
+                    },
+                    {
+                        "id": 79,
+                        "name": "Stir Fry Bihon Noodles",
+                        "description": "Rice sticks noodles, meat and variety of sauteed vegetables.",
+                        "price": 6.50,
+                        "image": "asset/images/dinner/bihon.png",
+                        "meatChoices": [
+                            "Shrimp",
+                            "Chicken",
+                            "Extra Sausage"
+                        ]
+                    },
+                    {
+                        "id": 80,
+                        "name": "Stir Fry Canton Noodles",
+                        "description": "Flour noodle, meat and variety of sauteed vegetables.",
+                        "price": 7.50,
+                        "image": "asset/images/dinner/canton.png",
+                        "meatChoices": [
+                            "Shrimp",
+                            "Chicken",
+                            "Extra Sausage"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "Delicious Fish",
+                "items": [
+                    {
+                        "id": 81,
+                        "name": "Grilled Fish",
+                        "description": "Fresh Tuna Grilled with a Parsley lemon Marinade.",
+                        "price": 8.25,
+                        "image": "asset/images/dinner/grilledfish.png"
+                    },
+                    {
+                        "id": 82,
+                        "name": "Grilled Pepper Tuna",
+                        "description": "Our fresh catch-of-the-day finely seasoned & grilled.",
+                        "price": 8.25,
+                        "image": "asset/images/dinner/grilledpeppertuna.png"
+                    },
+                    {
+                        "id": 83,
+                        "name": "Stuffed Tuna",
+                        "description": "Fillet tuna stuffed with crab meat and cheese.",
+                        "price": 14.50,
+                        "image": "  "
+                    }
+                ]
+            },
+            {
+                "category": "Soups",
+                "items": [
+                    {
+                        "id": 84,
+                        "name": "Pork Ribs & Vegetables",
+                        "description": "",
+                        "price": 7.50,
+                        "image": "asset/images/dinner/porkribssoup.png"
+                    },
+                    {
+                        "id": 85,
+                        "name": "Beef Meat & Vegetables",
+                        "description": "",
+                        "price": 8.50,
+                        "image": "asset/images/dinner/beefmeatsoup.png"
+                    },
+                    {
+                        "id": 86,
+                        "name": "Fish Sinigang",
+                        "description": "",
+                        "price": 7,
+                        "image": "asset/images/dinner/porksinigang.png"
+                    },
+                    {
+                        "id": 87,
+                        "name": "Pork Sinigang",
+                        "description": "",
+                        "price": 8,
+                        "image": "  "
+                    }
+                ]
+            },
+            {
+                "category": "Extras",
+                "items": [
+                    {
+                        "id": 88,
+                        "name": "Loco Moco",
+                        "description": "Seasoned beef patties grilled and topped with a house gravy.",
+                        "price": 13,
+                        "image": "  "
+                    },
+                    {
+                        "id": 89,
+                        "name": "Seafood Spaghetti",
+                        "description": "Spaghetti noodles with seafood mix and wine butter sauce, served  with garlic bread.",
+                        "price": 9.50,
+                        "image": "asset/images/dinner/seafoodspag.png"
+                    },
+                    {
+                        "id": 90,
+                        "name": "Shrimp Saute",
+                        "description": "Midly Seasoned and sauteed in garlic butter.",
+                        "price": 13.50,
+                        "image": "asset/images/dinner/shrimpsaute.png"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "mainCategoryName": "All Sides",
+        "subCategories": [
+            {
+                "category": "Sides",
+                "items": [
+                    {
+                        "id": 91,
+                        "name": "Plain Rice",
+                        "description": "",
+                        "price": 2.25,
+                        "image": "  "
+                    },
+                    {
+                        "id": 92,
+                        "name": "Fried Rice",
+                        "description": "",
+                        "price": 5,
+                        "image": "asset/images/dinner/friedrice.png"
+                    },
+                    {
+                        "id": 93,
+                        "name": "Bagel",
+                        "description": "",
+                        "price": 4.75,
+                        "image": "  "
+                    },
+                    {
+                        "id": 94,
+                        "name": "Toast",
+                        "description": "",
+                        "price": 3,
+                        "image": "  "
+                    },
+                    {
+                        "id": 95,
+                        "name": "French Toast",
+                        "description": "",
+                        "price": 5.50,
+                        "image": "  "
+                    },
+                    {
+                        "id": 96,
+                        "name": "Wheat Toast",
+                        "description": "",
+                        "price": 4.50,
+                        "image": "  "
+                    },
+                    {
+                        "id": 97,
+                        "name": "Eggs",
+                        "description": "",
+                        "price": 3.75,
+                        "image": "  "
+                    },
+                    {
+                        "id": 98,
+                        "name": "Sliced Bacon",
+                        "description": "",
+                        "price": 6,
+                        "image": "  "
+                    },
+                    {
+                        "id": 99,
+                        "name": "Portuguese Sausage",
+                        "description": "",
+                        "price": 4.25,
+                        "image": "  "
+                    },
+                    {
+                        "id": 100,
+                        "name": "Pork Link Sausage",
+                        "description": "",
+                        "price": 4.25,
+                        "image": "  "
+                    },
+                    {
+                        "id": 101,
+                        "name": "English Muffin",
+                        "description": "",
+                        "price": 4.50,
+                        "image": "  "
+                    },
+                    {
+                        "id": 102,
+                        "name": "French Fries",
+                        "description": "",
+                        "price": 3.75,
+                        "image": "asset/images/dinner/frenchfries.png"
+                    },
+                    {
+                        "id": 103,
+                        "name": "Potato Wedges",
+                        "description": "",
+                        "price": 3.25,
+                        "image": "asset/images/dinner/potatowedges.png"
+                    },
+                    {
+                        "id": 104,
+                        "name": "Baked Potato",
+                        "description": "",
+                        "price": 3.25,
+                        "image": "  "
+                    },
+                    {
+                        "id": 105,
+                        "name": "Corn on the Cob",
+                        "description": "",
+                        "price": 5,
+                        "image": "  "
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "mainCategoryName": "Sweet Treats & Drinks",
+        "subCategories": [
+            {
+                "category": "Desserts",
+                "items": [
+                    {
+                        "id": 106,
+                        "name": "Mud Pie",
+                        "description": "",
+                        "price": 8.75,
+                        "image": "  "
+                    },
+                    {
+                        "id": 107,
+                        "name": "Strawberry & Cream",
+                        "description": "",
+                        "price": 8.75,
+                        "image": "  "
+                    },
+                    {
+                        "id": 108,
+                        "name": "Banana Split",
+                        "description": "",
+                        "price": 6.25,
+                        "image": "  "
+                    },
+                    {
+                        "id": 109,
+                        "name": "1 Scoop Ice Cream",
+                        "description": "",
+                        "price": 3.25,
+                        "image": "  "
+                    },
+                    {
+                        "id": 110,
+                        "name": "Banana Foster Ice Cream",
+                        "description": "",
+                        "price": 6,
+                        "image": "  "
+                    },
+                    {
+                        "id": 111,
+                        "name": "Ice Cream Crepe",
+                        "description": "",
+                        "price": 6.50,
+                        "image": "  "
+                    }
+                ]
+            },
+            {
+                "category": "Beverages",
+                "items": [
+                    {
+                        "id": 112,
+                        "name": "Bottled Water",
+                        "description": "",
+                        "price": 2,
+                        "image": "  "
+                    },
+                    {
+                        "id": 113,
+                        "name": "Iced Coffee",
+                        "description": "",
+                        "price": 2,
+                        "image": "  "
+                    },
+                    {
+                        "id": 114,
+                        "name": "Iced Tea",
+                        "description": "Refreshing young coconut water.",
+                        "price": 4,
+                        "image": "  "
+                    },
+                    {
+                        "id": 115,
+                        "name": "Hot Coffee",
+                        "description": "",
+                        "price": 2,
+                        "image": "  "
+                    },
+                    {
+                        "id": 116,
+                        "name": "Hot Tea",
+                        "description": "",
+                        "price": 2,
+                        "image": "  "
+                    },
+                    {
+                        "id": 117,
+                        "name": "Green Tea",
+                        "description": "",
+                        "price": 2,
+                        "image": "  "
+                    },
+                    {
+                        "id": 118,
+                        "name": "Juice",
+                        "description": "",
+                        "price": 2,
+                        "image": "  "
+                    }
+                ]
+            }
+        ]
+    }
+]
